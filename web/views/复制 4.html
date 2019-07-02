@@ -1,0 +1,886 @@
+<section class="content" style="padding-top:0px">
+	<h3 class="shouye">
+	  	<span class="glyphicon glyphicon-home"></span> 
+		您当前位置：
+		<span style="color:#22BEEF;">工序管理</span>
+	</h3>
+	<div class="row">
+		<div class="tab_data" style="">
+			<p>
+				<img src="dist/img/qry.png" style="margin-right: 5px;position: relative;bottom: 2px;"/>
+				<b style="font-size:15px;">查询</b>
+			</p>
+			<div class="tab_body" style="overflow: hidden;text-align: center;">
+				<div class="col-xs-4 col-md-4 col-lg-4 mb10">
+					<div class="col-xs-4 col-md-4 col-lg-4  p0 tr">
+						<label class="pt6">
+							零件：
+						</label>
+					</div>
+					<input id="xNum" class="col-xs-8 col-md-8 col-lg-8  inputSty"  type="text"  placeholder="请输入零件"  />
+				</div>
+				<div class="col-xs-4 col-md-4 col-lg-4 mb10">
+					<div class="col-xs-4 col-md-4 col-lg-4  p0 tr">
+						<label class="pt6">
+							图号：
+						</label>
+					</div>
+					<input id="zNum" class="col-xs-8 col-md-8 col-lg-8  inputSty"  type="text"  placeholder="请输入图号" />
+				</div>
+				<div class="col-xs-4 col-md-4 col-lg-4 mb10">
+					<div class="col-xs-4 col-md-4 col-lg-4  p0 tr">
+						<label class="pt6">
+							材料：
+						</label>
+					</div>
+					<input id="tctype" class="col-xs-8 col-md-8 col-lg-8  inputSty"  type="text"  placeholder="请输入材料"/>
+				</div>
+				
+				<div class="col-xs-4 col-md-4 col-lg-4 mb10">
+					<div class="col-xs-4 col-md-4 col-lg-4  p0 tr">
+						<label class="pt6">
+							制号：
+						</label>
+					</div>
+					<input id="ruleId" class="col-xs-8 col-md-8 col-lg-8  inputSty"  type="text"  placeholder="请输入制号"/>
+				</div>
+				<div class=" col-xs-12 col-md-12 col-lg-12" >
+					<button class="btn btn-info    btnqry"    id='queryBtn'>查询</button>
+					<button class="btn btn-default btnqry" id='clearBtn'>清空</button>
+				</div>
+			</div>	
+		</div>
+	</div>
+	<div class="row">	
+		<div class="col-xs-12">
+			<div class="contant">
+				<div class="" style="margin-bottom: 15px;">
+					<button class="xqBtn" id="addBtn" ng-click="LBTJ()" style="padding: 5px 25px;">新增</button>
+					<button class='bjBtn' ng-click="editorNm()"     style="padding: 5px 25px;">修改</button>
+					<button class='delBtn'  ng-click="delectNm()" style="padding: 5px 25px;">删除</button>
+				</div>
+				<!--表格数据 -->
+				<div class="box_credit"  style="padding: 15px;background: #fff;overflow: auto;">
+					
+					<table id="example" class="table table-bordered table-striped" style="text-align: center;">
+						<tbody>
+							<tr style="font-weight:bolder ;">
+								<td>选择</td>
+								<td>产品制号</td>
+								<td>零部件图号</td>
+								<td>产品名称</td>
+								<td>零部件名称</td>
+								<td>材料编号</td>
+								<td>材料名称</td>
+								<td>材料牌号</td>
+								<td>标准号</td>
+								<td>材料技术要求</td>
+								<td>品种规格</td>
+								<td>毛坯数</td>
+								<td>每毛坯可制数</td>
+								<td>每台件数</td>
+								<td>总件数</td>
+							</tr>
+							<tr ng-repeat="list in listData">
+								<td>
+									<input type="radio" name="radio" data="{{list}}" value="" />
+								</td>
+								<td>{{list.lingjian}}</td>
+								<td class="xqtd" ng-click="InfoView(list)">{{list.tuhao}}</td>
+								<td>{{list.shuliang}}</td>
+								<td>{{list.cailiao}}</td>
+								<td>{{list.zhihao}}</td>
+								<td>{{list.zhihao}}</td>
+								<td>{{list.zhihao}}</td>
+								<td>{{list.zhihao}}</td>
+								<td>{{list.zhihao}}</td>
+								<td>{{list.zhihao}}</td>
+								<td>{{list.zhihao}}</td>
+								<td>{{list.zhihao}}</td>
+								<td>{{list.zhihao}}</td>
+								<td>{{list.zhihao}}</td>
+								<!--<td>
+									<button class='xqBtn' ng-click="showGX()">工序管理</button>
+								</td>-->
+								
+							</tr>
+						</tbody>
+					</table>
+					<div id="divT"  class="page_div"></div>
+				</div>	
+			</div>
+		</div>
+	</div>
+</section>
+<!--列表新增弹框-->
+<div id="addView" style="display:none;margin:20px">
+	<form >
+		 <fieldset>
+			<div class="col-xs-6 col-md-6 col-lg-6 ">
+				<div class="col-xs-4 col-md-4 col-lg-4  p0 tr">
+					<label class="pt6" for="dataname">
+						<span style="color: red;"><b>*</b></span>
+						产品制号：
+					</label>
+				</div>
+				<div class="form-group col-xs-8 col-md-8 col-lg-8 p0 tl">
+	               <input class="inputSty" id="bhNm" type="text" placeholder="请输入编号"/>
+	          </div>
+			</div>
+			<div class="col-xs-6 col-md-6 col-lg-6 " style="margin-bottom: 20px;">
+				<div class="col-xs-4 col-md-4 col-lg-4  p0 tr">
+					<label class="pt6" for="dataname">
+						零部件图号：
+					</label>
+				</div>
+				<div class="col-xs-8 col-md-8 col-lg-8 p0 tl">
+	               <input class="inputSty" id="" type="text" placeholder="请输入工序号"/>
+	          </div>
+			</div>
+			
+			<div class="col-xs-6 col-md-6 col-lg-6 ">
+				<div class="col-xs-4 col-md-4 col-lg-4  p0 tr">
+					<label class="pt6">
+						产品名称：
+					</label>
+				</div>
+				<div class="form-group col-xs-8 col-md-8 col-lg-8 p0 tl">
+	               <input id="ptPro" class="inputSty"  type="text" placeholder="请输入配套项目" />
+	          	</div>
+			</div>
+			<div class="col-xs-6 col-md-6 col-lg-6 ">
+				<div class="col-xs-4 col-md-4 col-lg-4  p0 tr">
+					<label class="pt6">
+						零部件名称：
+					</label>
+				</div>
+				<div class="form-group col-xs-8 col-md-8 col-lg-8 p0 tl">
+	               <input id="ruleName" class="inputSty"  type="text" placeholder="请输入任务名称" />
+	          	</div>
+			</div>
+			<div class="col-xs-6 col-md-6 col-lg-6 ">
+				<div class="col-xs-4 col-md-4 col-lg-4  p0 tr">
+					<label class="pt6">
+						材料编号：
+					</label>
+				</div>
+				<div class="form-group col-xs-8 col-md-8 col-lg-8 p0 tl">
+	               <input id="tcNm" class="inputSty"   placeholder="请输入投产数量"   maxlength="50" />
+	          	</div>
+			</div>
+			<div class="col-xs-6 col-md-6 col-lg-6 ">
+				<div class="col-xs-4 col-md-4 col-lg-4  p0 tr">
+					<label class="pt6">
+						材料名称：
+					</label>
+				</div>
+				<div class="form-group col-xs-8 col-md-8 col-lg-8 p0 tl">
+	               <input id="ptZc" class="inputSty"   placeholder="请输入配套组成表"   maxlength="50" />
+	          	</div>
+			</div>
+			<div class="col-xs-6 col-md-6 col-lg-6 ">
+				<div class="col-xs-4 col-md-4 col-lg-4  p0 tr">
+					<label class="pt6">
+						材料牌号：
+					</label>
+				</div>
+				<div class="form-group col-xs-8 col-md-8 col-lg-8 p0 tl">
+	               <input id="ruleNo" class="inputSty"   placeholder="请输入任务编号"   maxlength="50" />
+	          	</div>
+			</div>
+			
+			<div class="col-xs-6 col-md-6 col-lg-6 ">
+				<div class="col-xs-4 col-md-4 col-lg-4  p0 tr">
+					<label class="pt6">
+						标准号：
+					</label>
+				</div>
+				<div class="form-group col-xs-8 col-md-8 col-lg-8 p0 tl">
+	               <input id="isJJ" class="inputSty"   placeholder="请输入是否军检"   maxlength="50" />
+	          </div>
+			</div>
+			
+			<div class="col-xs-6 col-md-6 col-lg-6 ">
+				<div class="col-xs-4 col-md-4 col-lg-4  p0 tr">
+					<label class="pt6">
+						材料技术要求：
+					</label>
+				</div>
+				<div class="form-group col-xs-8 col-md-8 col-lg-8 p0 tl">
+	               <input id="sqDw" class="inputSty"   placeholder="请输入申请单位"   maxlength="50" />
+	          	</div>
+			</div>
+			
+			<div class="col-xs-6 col-md-6 col-lg-6 ">
+				<div class="col-xs-4 col-md-4 col-lg-4  p0 tr">
+					<label class="pt6">
+						品种规格：
+					</label>
+				</div>
+				<div class="form-group col-xs-8 col-md-8 col-lg-8 p0 tl">
+	               <input id="UseTel" class="inputSty"   placeholder="请输入联系人及电话"   maxlength="90" />
+	          	</div>
+			</div>
+			
+			<div class="col-xs-6 col-md-6 col-lg-6 ">
+				<div class="col-xs-4 col-md-4 col-lg-4  p0 tr">
+					<label class="pt6">
+						毛坯数：
+					</label>
+				</div>
+				<div class="form-group col-xs-8 col-md-8 col-lg-8 p0 tl">
+	               <input id="xyNm" class="inputSty"   placeholder="请输入承制协议号"   maxlength="50" />
+	          	</div>
+			</div>
+			<div class="col-xs-6 col-md-6 col-lg-6 ">
+				<div class="col-xs-4 col-md-4 col-lg-4  p0 tr">
+					<label class="pt6">
+						每毛坯可制数：
+					</label>
+				</div>
+				<div class="form-group col-xs-8 col-md-8 col-lg-8 p0 tl">
+	               <input id="xyNm" class="inputSty"   placeholder="请输入承制协议号"   maxlength="50" />
+	          	</div>
+			</div>
+			<div class="col-xs-6 col-md-6 col-lg-6 ">
+				<div class="col-xs-4 col-md-4 col-lg-4  p0 tr">
+					<label class="pt6">
+						每台件数：
+					</label>
+				</div>
+				<div class="form-group col-xs-8 col-md-8 col-lg-8 p0 tl">
+	               <input id="xyNm" class="inputSty"   placeholder="请输入承制协议号"   maxlength="50" />
+	          	</div>
+			</div>
+			<div class="col-xs-6 col-md-6 col-lg-6 ">
+				<div class="col-xs-4 col-md-4 col-lg-4  p0 tr">
+					<label class="pt6">
+						总件数：
+					</label>
+				</div>
+				<div class="form-group col-xs-8 col-md-8 col-lg-8 p0 tl">
+	               <input id="xyNm" class="inputSty"   placeholder="请输入承制协议号"   maxlength="50" />
+	          	</div>
+			</div>
+		 </fieldset>
+	</form>
+	<!--<button class="xqBtn" id="AddDetailListBtn" style="margin:15px;padding:3px 25px;border-radius:15px;outline: none;">新增</button>-->
+	<div class="" style="margin-bottom: 15px;">
+		<button class="addBtn" ng-click="GXTJ()" style="padding: 5px 25px;">新增</button>
+		<button class='bjBtn' ng-click="GXBJ()"     style="padding: 5px 25px;">修改</button>
+		<button class='delBtn'  ng-click="GXSC()" style="padding: 5px 25px;">删除</button>
+	</div>
+	<div class="">
+		<table class="table table-bordered table-striped" style="text-align: center;">
+		 	 <!--详情表格-->
+			 <tbody>
+				<tr style="font-weight:bolder ;">
+					<td >选择</td>
+					<td >工序号</td>
+					<td >工序名称</td>
+					<td>工序内容及附图</td>
+					<td>设备及工艺装备</td>
+					<td>操作者</td>
+					<td>工时单件</td>
+					<td>工时合计</td>
+					<td>检验</td>
+				</tr>
+				<tr ng-repeat="list in GXList" >
+					
+					<td>
+						<input type="radio" name="gongxu" data="{{list}}" value="" />
+					</td>
+					<td style="vertical-align: middle;">{{list.gongxuhao}}</td>
+					<td style="vertical-align: middle;max-width: 10%;">{{list.gongxu}}</td>
+					<td style="vertical-align: middle;">{{list.gongshi}}</td>
+					<td style="vertical-align: middle;">{{list.danjia}}</td>
+					<td style="vertical-align: middle;">{{list.gongxuhao}}</td>
+					<td style="vertical-align: middle;">{{list.gongxu}}</td>
+					<td style="vertical-align: middle;">{{list.gongxu}}</td>
+					<td style="vertical-align: middle;">{{list.danjia}}</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	
+	<div style="text-align: right;margin-top:30px;">
+		<div style="display: inline-block;">
+			<span > 设计日期：</span> 	 	
+			<input type="text"  id="desTime"  class="demo-input" placeholder="请选择时间" readonly="true"/>
+		</div>
+		<div style="display: inline-block;">
+			<span > 审核日期：</span> 	 	
+			<input type="text"  id="PoopTime"  class="demo-input" placeholder="请选择时间" readonly="true"/>
+		</div>
+		<div style="display: inline-block;">
+			<span > 批准日期：</span> 	 	
+			<input type="text"  id="AgreeTime"  class="demo-input" placeholder="请选择时间" readonly="true"/>
+		</div>
+		
+	</div>
+</div>
+
+
+
+
+<!--列表修改弹框-->
+<div id="editorListView" style="display:none;margin:20px">
+	<form >
+		 <fieldset>
+			<div class="col-xs-6 col-md-6 col-lg-6 ">
+				<div class="col-xs-4 col-md-4 col-lg-4  p0 tr">
+					<label class="pt6" for="dataname">
+						<span style="color: red;"><b>*</b></span>
+						产品制号：
+					</label>
+				</div>
+				<div class="form-group col-xs-8 col-md-8 col-lg-8 p0 tl">
+	               <input class="inputSty" id="bhNm" type="text" placeholder="请输入编号"/>
+	          </div>
+			</div>
+			<div class="col-xs-6 col-md-6 col-lg-6 " style="margin-bottom: 20px;">
+				<div class="col-xs-4 col-md-4 col-lg-4  p0 tr">
+					<label class="pt6" for="dataname">
+						零部件图号：
+					</label>
+				</div>
+				<div class="col-xs-8 col-md-8 col-lg-8 p0 tl">
+	               <input class="inputSty" id="" type="text" placeholder="请输入工序号"/>
+	          </div>
+			</div>
+			
+			<div class="col-xs-6 col-md-6 col-lg-6 ">
+				<div class="col-xs-4 col-md-4 col-lg-4  p0 tr">
+					<label class="pt6">
+						产品名称：
+					</label>
+				</div>
+				<div class="form-group col-xs-8 col-md-8 col-lg-8 p0 tl">
+	               <input id="ptPro" class="inputSty"  type="text" placeholder="请输入配套项目" />
+	          	</div>
+			</div>
+			<div class="col-xs-6 col-md-6 col-lg-6 ">
+				<div class="col-xs-4 col-md-4 col-lg-4  p0 tr">
+					<label class="pt6">
+						零部件名称：
+					</label>
+				</div>
+				<div class="form-group col-xs-8 col-md-8 col-lg-8 p0 tl">
+	               <input id="ruleName" class="inputSty"  type="text" placeholder="请输入任务名称" />
+	          	</div>
+			</div>
+			<div class="col-xs-6 col-md-6 col-lg-6 ">
+				<div class="col-xs-4 col-md-4 col-lg-4  p0 tr">
+					<label class="pt6">
+						材料编号：
+					</label>
+				</div>
+				<div class="form-group col-xs-8 col-md-8 col-lg-8 p0 tl">
+	               <input id="tcNm" class="inputSty"   placeholder="请输入投产数量"   maxlength="50" />
+	          	</div>
+			</div>
+			<div class="col-xs-6 col-md-6 col-lg-6 ">
+				<div class="col-xs-4 col-md-4 col-lg-4  p0 tr">
+					<label class="pt6">
+						材料名称：
+					</label>
+				</div>
+				<div class="form-group col-xs-8 col-md-8 col-lg-8 p0 tl">
+	               <input id="ptZc" class="inputSty"   placeholder="请输入配套组成表"   maxlength="50" />
+	          	</div>
+			</div>
+			<div class="col-xs-6 col-md-6 col-lg-6 ">
+				<div class="col-xs-4 col-md-4 col-lg-4  p0 tr">
+					<label class="pt6">
+						材料牌号：
+					</label>
+				</div>
+				<div class="form-group col-xs-8 col-md-8 col-lg-8 p0 tl">
+	               <input id="ruleNo" class="inputSty"   placeholder="请输入任务编号"   maxlength="50" />
+	          	</div>
+			</div>
+			
+			<div class="col-xs-6 col-md-6 col-lg-6 ">
+				<div class="col-xs-4 col-md-4 col-lg-4  p0 tr">
+					<label class="pt6">
+						标准号：
+					</label>
+				</div>
+				<div class="form-group col-xs-8 col-md-8 col-lg-8 p0 tl">
+	               <input id="isJJ" class="inputSty"   placeholder="请输入是否军检"   maxlength="50" />
+	          </div>
+			</div>
+			
+			<div class="col-xs-6 col-md-6 col-lg-6 ">
+				<div class="col-xs-4 col-md-4 col-lg-4  p0 tr">
+					<label class="pt6">
+						材料技术要求：
+					</label>
+				</div>
+				<div class="form-group col-xs-8 col-md-8 col-lg-8 p0 tl">
+	               <input id="sqDw" class="inputSty"   placeholder="请输入申请单位"   maxlength="50" />
+	          	</div>
+			</div>
+			
+			<div class="col-xs-6 col-md-6 col-lg-6 ">
+				<div class="col-xs-4 col-md-4 col-lg-4  p0 tr">
+					<label class="pt6">
+						品种规格：
+					</label>
+				</div>
+				<div class="form-group col-xs-8 col-md-8 col-lg-8 p0 tl">
+	               <input id="UseTel" class="inputSty"   placeholder="请输入联系人及电话"   maxlength="90" />
+	          	</div>
+			</div>
+			
+			<div class="col-xs-6 col-md-6 col-lg-6 ">
+				<div class="col-xs-4 col-md-4 col-lg-4  p0 tr">
+					<label class="pt6">
+						毛坯数：
+					</label>
+				</div>
+				<div class="form-group col-xs-8 col-md-8 col-lg-8 p0 tl">
+	               <input id="xyNm" class="inputSty"   placeholder="请输入承制协议号"   maxlength="50" />
+	          	</div>
+			</div>
+			<div class="col-xs-6 col-md-6 col-lg-6 ">
+				<div class="col-xs-4 col-md-4 col-lg-4  p0 tr">
+					<label class="pt6">
+						每毛坯可制数：
+					</label>
+				</div>
+				<div class="form-group col-xs-8 col-md-8 col-lg-8 p0 tl">
+	               <input id="xyNm" class="inputSty"   placeholder="请输入承制协议号"   maxlength="50" />
+	          	</div>
+			</div>
+			<div class="col-xs-6 col-md-6 col-lg-6 ">
+				<div class="col-xs-4 col-md-4 col-lg-4  p0 tr">
+					<label class="pt6">
+						每台件数：
+					</label>
+				</div>
+				<div class="form-group col-xs-8 col-md-8 col-lg-8 p0 tl">
+	               <input id="xyNm" class="inputSty"   placeholder="请输入承制协议号"   maxlength="50" />
+	          	</div>
+			</div>
+			<div class="col-xs-6 col-md-6 col-lg-6 ">
+				<div class="col-xs-4 col-md-4 col-lg-4  p0 tr">
+					<label class="pt6">
+						总件数：
+					</label>
+				</div>
+				<div class="form-group col-xs-8 col-md-8 col-lg-8 p0 tl">
+	               <input id="xyNm" class="inputSty"   placeholder="请输入承制协议号"   maxlength="50" />
+	          	</div>
+			</div>
+		 </fieldset>
+	</form>
+	<div class="" style="margin-bottom: 15px;">
+		<button class="addBtn" ng-click="GXTJ()" style="padding: 5px 25px;">新增</button>
+		<button class='bjBtn' ng-click="GXBJ()"     style="padding: 5px 25px;">修改</button>
+		<button class='delBtn'  ng-click="GXSC()" style="padding: 5px 25px;">删除</button>
+	</div>
+	<div class="contant">
+		<table class="table table-bordered table-striped" style="text-align: center;">
+		 	 <!--详情表格-->
+			 <tbody>
+				<tr style="font-weight:bolder ;">
+					<td >选择</td>
+					<td >工序号</td>
+					<td >工序名称</td>
+					<td>工序内容及附图</td>
+					<td>设备及工艺装备</td>
+					<td>操作者</td>
+					<td>工时单件</td>
+					<td>工时合计</td>
+					<td>检验</td>
+				</tr>
+				<tr ng-repeat="list in GXINfo">
+					
+					<td>
+						<input type="radio" name="gongxu" data="{{list}}" value="" />
+					</td>
+					<td>{{list.Nm}}</td>
+					<td>{{list.gx}}</td>
+					<td>{{list.GXNR}}</td>
+					<td>{{list.GXZB}}</td>
+					<td>{{list.CZZ}}</td>
+					<td>{{list.price}}</td>
+					<td>{{list.total}}</td>
+					<td>{{list.JY}}</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	
+	<div style="text-align: right;margin-top:30px;">
+		<div style="display: inline-block;">
+			<span > 设计日期：</span> 	 	
+			<input type="text"  id="desTime_editor"  class="demo-input" placeholder="请选择时间" readonly="true"/>
+		</div>
+		<div style="display: inline-block;">
+			<span > 审核日期：</span> 	 	
+			<input type="text"  id="PoopTime_editor"  class="demo-input" placeholder="请选择时间" readonly="true"/>
+		</div>
+		<div style="display: inline-block;">
+			<span > 批准日期：</span> 	 	
+			<input type="text"  id="AgreeTime_editor"  class="demo-input" placeholder="请选择时间" readonly="true"/>
+		</div>
+		
+	</div>
+</div>
+
+<!--工序新增页面-->
+<div id="addGXView" style="display:none;">
+	<form class="cmxform" id="commentForm" method="get" style="margin-top: 20px;">
+		 <fieldset>
+			<div class="col-xs-12 col-md-12 col-lg-12 ">
+				<div class="col-xs-4 col-md-4 col-lg-4  p0 tr">
+					<label class="pt6" for="dataname">
+						工序号：
+					</label>
+				</div>
+				<div class="form-group col-xs-8 col-md-8 col-lg-8 p0 tl">
+	               <input class="inputSty" id="gongxuhao" type="text" placeholder="请输入工序号"/>
+	          </div>
+			</div>
+			
+			<div class="col-xs-12 col-md-12 col-lg-12 ">
+				<div class="col-xs-4 col-md-4 col-lg-4  p0 tr">
+					<label class="pt6">
+						工序名称：
+					</label>
+				</div>
+				<div class="form-group col-xs-8 col-md-8 col-lg-8 p0 tl">
+	               <input id="gongxu" class="inputSty"  type="text" placeholder="请输入工序" />
+	          	</div>
+			</div>
+			<div class="col-xs-12 col-md-12 col-lg-12 ">
+				<div class="col-xs-4 col-md-4 col-lg-4  p0 tr">
+					<label class="pt6">
+						工序内容及附图：
+					</label>
+				</div>
+				<div class="form-group col-xs-8 col-md-8 col-lg-8 p0 tl">
+	               <!--<input id="gongshi" class="inputSty"  type="text" placeholder="请输入工时" />-->
+	               <textarea id="gongxu_content" name="" rows="" cols="" style="width: 300px;"></textarea>
+	          	</div>
+			</div>
+			<div class="col-xs-12 col-md-12 col-lg-12 ">
+				<div class="col-xs-4 col-md-4 col-lg-4  p0 tr">
+					<label class="pt6">
+						设备及工艺装备：
+					</label>
+				</div>
+				<div class="form-group col-xs-8 col-md-8 col-lg-8 p0 tl">
+	               <input id="gongshi" class="inputSty"  type="text" placeholder="请输入工时" />
+	          	</div>
+			</div>
+			<div class="col-xs-12 col-md-12 col-lg-12 ">
+				<div class="col-xs-4 col-md-4 col-lg-4  p0 tr">
+					<label class="pt6">
+						操作者：
+					</label>
+				</div>
+				<div class="form-group col-xs-8 col-md-8 col-lg-8 p0 tl">
+	               <input id="gongshi" class="inputSty"  type="text" placeholder="请输入工时" />
+	          	</div>
+			</div>
+			<div class="col-xs-12 col-md-12 col-lg-12 ">
+				<div class="col-xs-4 col-md-4 col-lg-4  p0 tr">
+					<label class="pt6">
+						工时单件：
+					</label>
+				</div>
+				<div class="form-group col-xs-8 col-md-8 col-lg-8 p0 tl">
+	               <input id="gongshi" class="inputSty"  type="text" placeholder="请输入工时" />
+	          	</div>
+			</div>
+			<div class="col-xs-12 col-md-12 col-lg-12 ">
+				<div class="col-xs-4 col-md-4 col-lg-4  p0 tr">
+					<label class="pt6">
+						工时合计：
+					</label>
+				</div>
+				<div class="form-group col-xs-8 col-md-8 col-lg-8 p0 tl">
+	               <input id="gongshi" class="inputSty"  type="text" placeholder="请输入工时" />
+	          	</div>
+			</div>
+			<div class="col-xs-12 col-md-12 col-lg-12 ">
+				<div class="col-xs-4 col-md-4 col-lg-4  p0 tr">
+					<label class="pt6">
+						检验：
+					</label>
+				</div>
+				<div class="form-group col-xs-8 col-md-8 col-lg-8 p0 tl">
+	               <input id="danjia" class="inputSty"   placeholder="请输入单价"   maxlength="50" />
+	          	</div>
+			</div>
+		 </fieldset>
+	</form>
+</div>
+
+
+
+<!--工序修改页面-->
+<div id="GXEDTView" style="display:none;">
+	<form class="cmxform" id="commentForm" method="get" style="margin-top: 20px;">
+		 <fieldset>
+			<div class="col-xs-12 col-md-12 col-lg-12 ">
+				<div class="col-xs-4 col-md-4 col-lg-4  p0 tr">
+					<label class="pt6" for="dataname">
+						工序号：
+					</label>
+				</div>
+				<div class="form-group col-xs-8 col-md-8 col-lg-8 p0 tl">
+	               <input class="gongxuhao" value="{{editorInfo.gongxuhao}}" ng-model="editorInfo.gongxuhao"/>
+	          </div>
+			</div>
+			
+			<div class="col-xs-12 col-md-12 col-lg-12 ">
+				<div class="col-xs-4 col-md-4 col-lg-4  p0 tr">
+					<label class="pt6">
+						工序名称：
+					</label>
+				</div>
+				<div class="form-group col-xs-8 col-md-8 col-lg-8 p0 tl">
+	               <input class="gongxu" value="{{editorInfo.gongxu}}" ng-model="editorInfo.gongxu"/>
+	          	</div>
+			</div>
+			<div class="col-xs-12 col-md-12 col-lg-12 ">
+				<div class="col-xs-4 col-md-4 col-lg-4  p0 tr">
+					<label class="pt6">
+						工序内容及附图：
+					</label>
+				</div>
+				<div class="form-group col-xs-8 col-md-8 col-lg-8 p0 tl">
+	               
+	                <textarea class="gongxu_content" ng-model="editorInfo.gongshi" style="width: 300px;">{{editorInfo.gongshi}}</textarea>
+	          	</div>
+			</div>
+			<div class="col-xs-12 col-md-12 col-lg-12 ">
+				<div class="col-xs-4 col-md-4 col-lg-4  p0 tr">
+					<label class="pt6">
+						设备及工艺装备：
+					</label>
+				</div>
+				<div class="form-group col-xs-8 col-md-8 col-lg-8 p0 tl">
+	               <input class="gongxu"value="{{editorInfo.gongxu}}" ng-model="editorInfo.gongxu"/>
+	          	</div>
+			</div>
+			<div class="col-xs-12 col-md-12 col-lg-12 ">
+				<div class="col-xs-4 col-md-4 col-lg-4  p0 tr">
+					<label class="pt6">
+						工时单件：
+					</label>
+				</div>
+				<div class="form-group col-xs-8 col-md-8 col-lg-8 p0 tl">
+	               <input class="danjia inputSty" value="{{editorInfo.danjia}}" ng-model="editorInfo.danjia"/>
+	          	</div>
+			</div>
+			<div class="col-xs-12 col-md-12 col-lg-12 ">
+				<div class="col-xs-4 col-md-4 col-lg-4  p0 tr">
+					<label class="pt6">
+						操作者：
+					</label>
+				</div>
+				<div class="form-group col-xs-8 col-md-8 col-lg-8 p0 tl">
+	               <input class="gongxu"value="{{editorInfo.gongxu}}" ng-model="editorInfo.gongxu"/>
+	          	</div>
+			</div>	
+			<div class="col-xs-12 col-md-12 col-lg-12 ">
+				<div class="col-xs-4 col-md-4 col-lg-4  p0 tr">
+					<label class="pt6">
+						工时合计：
+					</label>
+				</div>
+				<div class="form-group col-xs-8 col-md-8 col-lg-8 p0 tl">
+	               <input class="gongshi" value="{{editorInfo.gongxu}}" ng-model="editorInfo.gongxu"/>
+	          	</div>
+			</div>
+			<div class="col-xs-12 col-md-12 col-lg-12 ">
+				<div class="col-xs-4 col-md-4 col-lg-4  p0 tr">
+					<label class="pt6">
+						检验：
+					</label>
+				</div>
+				<div class="form-group col-xs-8 col-md-8 col-lg-8 p0 tl">
+	               <input class="danjia inputSty" value="{{editorInfo.danjia}}" ng-model="editorInfo.danjia"/>
+	          	</div>
+			</div>
+		 </fieldset>
+	</form>
+</div>
+
+
+<!--工序列表-->
+<div class="GXView" style="display: none;margin: 15px;">
+	<div style="overflow: hidden;margin-bottom: 15px;">
+		<div class="col-xs-6 col-md-6 col-lg-6 ">
+			<div class="col-xs-4 col-md-4 col-lg-4  p0 tr">
+				<label class="pt6" for="dataname">
+					产品制号：
+				</label>
+			</div>
+			<div class="form-span col-xs-8 col-md-8 col-lg-8 p0 tl">
+               {{editorInfo.bH}}
+          </div>
+		</div>
+		
+		<div class="col-xs-6 col-md-6 col-lg-6 ">
+			<div class="col-xs-4 col-md-4 col-lg-4  p0 tr">
+				<label class="pt6">
+					零部件图号：
+				</label>
+			</div>
+			<div class="form-span col-xs-8 col-md-8 col-lg-8 p0 tl">
+				{{editorInfo.ptPro}}              
+          	</div>
+		</div>
+		<div class="col-xs-6 col-md-6 col-lg-6 ">
+			<div class="col-xs-4 col-md-4 col-lg-4  p0 tr">
+				<label class="pt6">
+					产品名称：
+				</label>
+			</div>
+			<div class="form-span col-xs-8 col-md-8 col-lg-8 p0 tl">
+               {{editorInfo.ruleName}}
+          	</div>
+		</div>
+		<div class="col-xs-6 col-md-6 col-lg-6 ">
+			<div class="col-xs-4 col-md-4 col-lg-4  p0 tr">
+				<label class="pt6">
+					零部件名称：
+				</label>
+			</div>
+			<div class="form-span col-xs-8 col-md-8 col-lg-8 p0 tl">
+               {{editorInfo.tcNumber}}
+          	</div>
+		</div>
+		<div class="col-xs-6 col-md-6 col-lg-6 ">
+			<div class="col-xs-4 col-md-4 col-lg-4  p0 tr">
+				<label class="pt6">
+					材料编号：
+				</label>
+			</div>
+			<div class="form-span col-xs-8 col-md-8 col-lg-8 p0 tl">
+               {{editorInfo.ptZc}}
+          	</div>
+		</div>
+		<div class="col-xs-6 col-md-6 col-lg-6 ">
+			<div class="col-xs-4 col-md-4 col-lg-4  p0 tr">
+				<label class="pt6">
+					材料名称：
+				</label>
+			</div>
+			<div class="form-span col-xs-8 col-md-8 col-lg-8 p0 tl">
+               {{editorInfo.ruleNum}}
+          	</div>
+		</div>
+		<div class="col-xs-6 col-md-6 col-lg-6 ">
+			<div class="col-xs-4 col-md-4 col-lg-4  p0 tr">
+				<label class="pt6">
+					材料牌号：
+				</label>
+			</div>
+			<div class="form-span col-xs-8 col-md-8 col-lg-8 p0 tl">
+               {{editorInfo.isJJ}}
+          	</div>
+		</div>
+		<div class="col-xs-6 col-md-6 col-lg-6 ">
+			<div class="col-xs-4 col-md-4 col-lg-4  p0 tr">
+				<label class="pt6">
+					标准号：
+				</label>
+			</div>
+			<div class="form-span col-xs-8 col-md-8 col-lg-8 p0 tl">
+               {{editorInfo.sqDw}}
+          	</div>
+		</div>
+		<div class="col-xs-6 col-md-6 col-lg-6 ">
+			<div class="col-xs-4 col-md-4 col-lg-4  p0 tr">
+				<label class="pt6">
+					材料技术要求：
+				</label>
+			</div>
+			<div class="form-span col-xs-8 col-md-8 col-lg-8 p0 tl">
+               {{editorInfo.UsTel}}
+          	</div>
+		</div>
+		<div class="col-xs-6 col-md-6 col-lg-6 ">
+			<div class="col-xs-4 col-md-4 col-lg-4  p0 tr">
+				<label class="pt6">
+					品种规则：
+				</label>
+			</div>
+			<div class="form-span col-xs-8 col-md-8 col-lg-8 p0 tl">
+               {{editorInfo.UsTel}}
+          	</div>
+		</div>
+		<div class="col-xs-6 col-md-6 col-lg-6 ">
+			<div class="col-xs-4 col-md-4 col-lg-4  p0 tr">
+				<label class="pt6">
+					毛坯数：
+				</label>
+			</div>
+			<div class="form-span col-xs-8 col-md-8 col-lg-8 p0 tl">
+               {{editorInfo.UsTel}}
+          	</div>
+		</div>
+		<div class="col-xs-6 col-md-6 col-lg-6 ">
+			<div class="col-xs-4 col-md-4 col-lg-4  p0 tr">
+				<label class="pt6">
+					每毛坯可制数：
+				</label>
+			</div>
+			<div class="form-span col-xs-8 col-md-8 col-lg-8 p0 tl">
+               {{editorInfo.UsTel}}
+          	</div>
+		</div>
+		<div class="col-xs-6 col-md-6 col-lg-6 ">
+			<div class="col-xs-4 col-md-4 col-lg-4  p0 tr">
+				<label class="pt6">
+					每台件数：
+				</label>
+			</div>
+			<div class="form-span col-xs-8 col-md-8 col-lg-8 p0 tl">
+               {{editorInfo.UsTel}}
+          	</div>
+		</div>
+		<div class="col-xs-6 col-md-6 col-lg-6 ">
+			<div class="col-xs-4 col-md-4 col-lg-4  p0 tr">
+				<label class="pt6">
+					总件数：
+				</label>
+			</div>
+			<div class="form-span col-xs-8 col-md-8 col-lg-8 p0 tl">
+               {{editorInfo.UsTel}}
+          	</div>
+		</div>
+	</div>
+	<table class="table table-bordered table-striped" style="text-align: center;">
+		<tbody>
+			<tr style="font-weight:bolder ;">
+				<td >工序号</td>
+				<td>工序名称</td>
+				<td>工序内容及附图</td>
+				<td>设备及工艺装备</td>
+				<td>操作者</td>
+				<td>工时单件</td>
+				<td>工时合计</td>
+				<td>检验</td>
+			</tr>
+			<tr ng-repeat="list in GXINfo" >
+				<td style="vertical-align: middle;">{{list.Nm}}</td>
+				<td style="vertical-align: middle;">{{list.gx}}</td>
+				<td style="vertical-align: middle;">{{list.GXNR}}</td>
+				<td style="vertical-align: middle;">{{list.GXZB}}</td>
+				<td style="vertical-align: middle;">{{list.CZZ}}</td>
+				<td style="vertical-align: middle;">{{list.price}}</td>
+				<td style="vertical-align: middle;">{{list.total}}</td>
+				<td style="vertical-align: middle;">{{list.JY}}</td>
+			</tr> 
+		</tbody>
+	</table>
+	<div id="divT_GXList"  class="page_div"></div>
+</div>

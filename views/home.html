@@ -1,0 +1,87 @@
+<div class="wrapper">
+  <header class="main-header">
+    <a  class="logo" style="padding: 0px;">
+      <img src="dist/img/lg.png" alt="" style="width: 100%;"/>
+    </a>
+    <!-- 头部内容 -->
+    <nav class="navbar navbar-static-top">
+    	<span class="qiye" >数据管理</span>
+      <div class="navbar-custom-menu">
+        <ul class="nav navbar-nav">
+        	<!--信息4-->
+          <li class="dropdown messages-menu">
+            <div  class="dropdown-toggle " data-toggle="dropdown" style="display: inline-block;height: 50px;padding:0px 0px;cursor: pointer;border: none;">
+              <img src="dist/img/Layer7.png" alt="" style="margin-top: 15px;"/>
+              <span class="label label-danger" style="position: relative;left: -15px;top: -3px;">4</span>
+            </div>
+            <ul class="dropdown-menu">
+            	<div class="rack"></div>
+              <li class="header">待处理事项</li>
+              <li>
+                <ul class="menu">
+                	<table class="table table-striped " style="text-align: center;">
+										<tbody>
+											<tr style="font-weight:bolder ;">
+												<td>送达时间</td>
+												<td>处理事项</td>
+												<td>申请人</td>
+												<td>超时(天)</td>
+												<td>操作</td>
+											</tr>
+											<tr ng-repeat="list in pendList">
+												<td><span class="glyphicon glyphicon-time" style="color:#FFC100"></span> {{list.time}}</td>
+												<td>{{list.pend}}</td>
+												<td>{{list.name}}</td>
+												<td>{{list.pretime}}</td>
+												<td><button style="border: 1px solid #22BEEF;color:#22BEEF;padding:0pxs" ui-sref="{{list.path}}">前往处理</button></td>
+											</tr>
+										</tbody>
+									</table>
+                </ul>
+              </li>
+            </ul>
+          </li>	
+          <li class="dropdown user user-menu" style="border-left: 1px solid #C3C3C3;">
+           <div  class="dropdown-toggle"  style="height: 50px;padding:0px 20px;">
+            	<div style="float:left;margin-top: 15px;">
+            		<img src="{{userInfo.USERICON}}" class="user-image" alt="User Image">
+            	</div>
+              <div style="float:left;margin-top:8px;">
+              	<span >{{userInfo.DEPTNAME}}</span>
+              	<br />
+              	<span class="USERNAME" style="color:#0000FF;">{{userInfo.USERNAME}}</span>
+              </div>
+            </div>
+          </li>
+          <li>
+          	<!--退出登录-->
+            <span class="glyphicon glyphicon-log-out " ng-click="logout()" style="font-size:23px;margin-left:13px;margin-right:10px;position: relative;top: 13px;cursor: pointer;">
+	    	</span>
+          </li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+  <!-- 左侧侧边栏 -->
+  <aside class="main-sidebar">
+    <section class="sidebar">
+      <div class="user-panel">
+      	<img src="dist/img/font.jpg" style="width: 230px;"/>
+      </div>
+      <!-- 导航栏 -->
+      <ul id="treeDemo" class="ztree"></ul>
+    </section>
+  </aside>
+  <!--右侧容器-->
+  <div class="content-wrapper">
+   	<div ui-view></div>
+  </div>
+</div>
+<!--ztree-->
+<script type="text/javascript" src="dist/js/jquery.ztree.all.js"></script>
+<script data-main="js/main" src="libs/require.js"></script>
+
+
+
+
+

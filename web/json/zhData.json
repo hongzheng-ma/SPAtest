@@ -1,0 +1,31 @@
+{
+ 	"pageNum":"1",
+	"pages":"3",
+	"total":"60",
+	"list":[
+			{
+			"bH":"SCW 10590",
+			"ptPro":"外接任务",
+			"ruleName":"轴承架等零件加工",
+			"tcNumber":"12种共196件",
+			"ptZc":"Y-001",
+			"ruleNum":"ZBH13-81",
+			"isJJ":"其他",
+			"type":"自制",
+			"name":"01"
+		},
+		{
+			"bH":"SCW 10591",
+			"ptPro":"外接任务",
+			"ruleName":"轴承架等零件加工",
+			"tcNumber":"12种共196件",
+			"ptZc":"Y-002",
+			"ruleNum":"ZBH13-81",
+			"isJJ":"其他",
+			"type":"工序外协",
+			"name":"02"
+		}
+	]
+	
+}
+

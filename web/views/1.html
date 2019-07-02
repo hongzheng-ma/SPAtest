@@ -1,0 +1,957 @@
+<section class="content" style="padding-top:0px">
+	<h3 class="shouye">
+	  	<span class="glyphicon glyphicon-home"></span> 
+		您当前位置：
+		<span style="color:#22BEEF;">生产任务单</span>
+	</h3>
+	<div class="row">
+		<div class="tab_data" style="">
+			<p>
+				<img src="dist/img/qry.png" style="margin-right: 5px;position: relative;bottom: 2px;"/>
+				<b style="font-size:15px;">查询</b>
+			</p>
+			<div class="tab_body" style="overflow: hidden;text-align: center;">
+				<div class="col-xs-4 col-md-4 col-lg-4 mb10">
+					<div class="col-xs-4 col-md-4 col-lg-4  p0 tr">
+						<label class="pt6">
+							任务名称：
+						</label>
+					</div>
+					<input id="rulename" class="col-xs-8 col-md-8 col-lg-8  inputSty"  type="text"  placeholder="请输入任务名称"   maxlength="88"/>
+				</div>
+				<div class="col-xs-4 col-md-4 col-lg-4 mb10">
+					<div class="col-xs-4 col-md-4 col-lg-4  p0 tr">
+						<label class="pt6">
+							任务编号：
+						</label>
+					</div>
+					<input id="ruleNum" class="col-xs-8 col-md-8 col-lg-8  inputSty"  type="text"  placeholder="请输入任务编号"  maxlength="58"/>
+				</div>
+				<div class="col-xs-4 col-md-4 col-lg-4 mb10">
+					<div class="col-xs-4 col-md-4 col-lg-4  p0 tr">
+						<label class="pt6">
+							申请单位：
+						</label>
+					</div>
+					<input id="sqdw" class="col-xs-8 col-md-8 col-lg-8  inputSty"  type="text"  placeholder="请输入申请单位"/>
+				</div>
+				
+				<div class="col-xs-4 col-md-4 col-lg-4 mb10">
+					<div class="col-xs-4 col-md-4 col-lg-4  p0 tr">
+						<label class="pt6">
+							下达：
+						</label>
+					</div>
+					<div class="col-xs-8 col-md-8 col-lg-8 p0 tl">
+		               <select class="form-control select2" id="XDSTT" style="width:100%;">
+		               		<option value="" selected="selected">请选择</option>
+		               		<option value="00">已下达</option>
+		               		<option value="01">未下达</option>
+		               </select>
+		          	</div>
+				</div>
+				<div class=" col-xs-12 col-md-12 col-lg-12" >
+					<button class="btn btn-info    btnqry"    id='queryBtn'>查询</button>
+					<button class="btn btn-default btnqry" id='clearBtn'>清空</button>
+				</div>
+			</div>	
+		</div>
+	</div>
+	<div class="" style="margin-bottom: 15px;">
+		<button class="xqBtn"   id="addBtn" style="padding: 5px 25px;">添加</button>
+		<button class='bjBtn'   ng-click="editorNm()"   style="padding: 5px 25px;">修改</button>
+		<button class='delBtn'  ng-click="delectNm()"   style="padding: 5px 25px;">删除</button>
+		<button class='fpBtn'   ng-click="XIADA()"   style="padding: 5px 25px;">下达</button>
+		<!--<button class='fpBtn' ng-click="showXQ()"   style="padding: 5px 25px;">分配</button>-->
+	</div>
+	
+	<div class="row">	
+		<div class="col-xs-12">
+			<div class="contant" style="text-align: center">
+				<!--表格数据 -->
+				<div class="box_credit"  style="padding: 15px;background: #fff;overflow: auto;">
+					<table id="example" class="table table-bordered table-striped" style="text-align: center;">
+						<tbody>
+							<tr style="font-weight:bolder ;">
+								<td>选择</td>
+								<td>编号</td>
+								<td>任务类别</td>
+								<td>配套项目</td>
+								<td>任务名称</td>
+								
+								<td>投产数量</td>
+								<td>配套组成表</td>
+								<td>任务编号</td>
+								<td>是否军检</td>
+								<td>申请单位</td>
+								<td>联系人</td>
+								<td>联系人电话</td>
+								<td>下达状态</td>
+								<!--<td>操作</td>-->
+							</tr>
+							<tr ng-repeat="list in listData">
+								<td>
+									<input type="radio" name="radio" data="{{list}}" value="" />
+								</td>
+								<td class="xqtd"  ng-click="InfoView(list)">{{list.BIANHAO}}</td>
+								<td>{{list.LEIBIE}}</td>
+								<td>{{list.PEITAOXM}}</td>
+								<td>{{list.RENWU}}</td>
+								<td>{{list.TOUCHANNM}}</td>
+								<td>{{list.PEITAOBIAO}}</td>
+								<td>{{list.RENWUBH}}</td>
+								<td>{{list.JUNJIAN}}</td>
+								<td>{{list.SQDANWEI}}</td>
+								<td>{{list.USER}}</td>
+								<td>{{list.TEL}}</td>
+								<td>{{list.XIADADesc}}</td>
+							</tr>
+						</tbody>
+					</table>
+					<div id="divT"  class="page_div"></div>
+				</div>	
+			</div>
+		</div>
+	</div>
+</section>
+
+<!--详细信息弹框-->
+<div class="InfoView" style="display:none;margin: 15px;">
+	<div style="overflow: hidden;">
+		<div class="col-xs-6 col-md-6 col-lg-6 ">
+			<div class="col-xs-4 col-md-4 col-lg-4  p0 tr">
+				<label class="pt6" for="dataname">
+					编号：
+				</label>
+			</div>
+			<div class="form-span col-xs-8 col-md-8 col-lg-8 p0 tl">
+               {{editorInfo.bH}}
+          </div>
+		</div>
+		
+		<div class="col-xs-6 col-md-6 col-lg-6 ">
+			<div class="col-xs-4 col-md-4 col-lg-4  p0 tr">
+				<label class="pt6">
+					配套项目：
+				</label>
+			</div>
+			<div class="form-span col-xs-8 col-md-8 col-lg-8 p0 tl">
+				{{editorInfo.ptPro}}              
+          	</div>
+		</div>
+		<div class="col-xs-6 col-md-6 col-lg-6 ">
+			<div class="col-xs-4 col-md-4 col-lg-4  p0 tr">
+				<label class="pt6">
+					任务名称：
+				</label>
+			</div>
+			<div class="form-span col-xs-8 col-md-8 col-lg-8 p0 tl">
+               {{editorInfo.ruleName}}
+          	</div>
+		</div>
+		<div class="col-xs-6 col-md-6 col-lg-6 ">
+			<div class="col-xs-4 col-md-4 col-lg-4  p0 tr">
+				<label class="pt6">
+					投产数量：
+				</label>
+			</div>
+			<div class="form-span col-xs-8 col-md-8 col-lg-8 p0 tl">
+               {{editorInfo.tcNumber}}
+          	</div>
+		</div>
+		<div class="col-xs-6 col-md-6 col-lg-6 ">
+			<div class="col-xs-4 col-md-4 col-lg-4  p0 tr">
+				<label class="pt6">
+					配套组成表：
+				</label>
+			</div>
+			<div class="form-span col-xs-8 col-md-8 col-lg-8 p0 tl">
+               {{editorInfo.ptZc}}
+          	</div>
+		</div>
+		<div class="col-xs-6 col-md-6 col-lg-6 ">
+			<div class="col-xs-4 col-md-4 col-lg-4  p0 tr">
+				<label class="pt6">
+					任务编号：
+				</label>
+			</div>
+			<div class="form-span col-xs-8 col-md-8 col-lg-8 p0 tl">
+               {{editorInfo.ruleNum}}
+          	</div>
+		</div>
+		<div class="col-xs-6 col-md-6 col-lg-6 ">
+			<div class="col-xs-4 col-md-4 col-lg-4  p0 tr">
+				<label class="pt6">
+					是否军检：
+				</label>
+			</div>
+			<div class="form-span col-xs-8 col-md-8 col-lg-8 p0 tl">
+               {{editorInfo.isJJ}}
+          	</div>
+		</div>
+		<div class="col-xs-6 col-md-6 col-lg-6 ">
+			<div class="col-xs-4 col-md-4 col-lg-4  p0 tr">
+				<label class="pt6">
+					申请单位：
+				</label>
+			</div>
+			<div class="form-span col-xs-8 col-md-8 col-lg-8 p0 tl">
+               {{editorInfo.sqDw}}
+          	</div>
+		</div>
+		<div class="col-xs-6 col-md-6 col-lg-6 ">
+			<div class="col-xs-4 col-md-4 col-lg-4  p0 tr">
+				<label class="pt6">
+					联系人及电话：
+				</label>
+			</div>
+			<div class="form-span col-xs-8 col-md-8 col-lg-8 p0 tl">
+               {{editorInfo.UsTel}}
+          	</div>
+		</div>
+		<div class="col-xs-6 col-md-6 col-lg-6 ">
+			<div class="col-xs-4 col-md-4 col-lg-4  p0 tr">
+				<label class="pt6">
+					承制协议号：
+				</label>
+			</div>
+			<div class="form-span col-xs-8 col-md-8 col-lg-8 p0 tl">
+               {{editorInfo.UsTel}}
+          	</div>
+		</div>
+	</div>
+	<div class="qrycontant">
+		<div  style="margin-top:15px;">
+			<table class="table table-bordered table-striped" style="text-align: center;">
+				<tbody>
+					<tr style="font-weight:bolder ;">
+						<td >ID</td>
+						<td >承接内容</td>
+						<td>具体要求</td>
+						<td>完成时间</td>
+						<td>节点类型</td>
+						<td>生产制号</td>
+						<td>责任部门</td>
+						<td>人</td>
+						
+					</tr>
+					<tr ng-repeat="list in detailList" >
+						<td style="vertical-align: middle;">{{$index+1}}</td>
+						<td style="vertical-align: middle;">{{list.content}}</td>
+						<td style="vertical-align: middle;">{{list.jtyq}}</td>
+						<td style="vertical-align: middle;">{{list.time}}</td>
+						<td style="vertical-align: middle;">{{list.type}}</td>
+						<td style="vertical-align: middle;">{{list.scNum}}</td>
+						<td style="vertical-align: middle;">{{list.zrBm}}</td>
+						<td style="vertical-align: middle;">{{list.zrBm}}</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>
+
+<!--分配列表弹框-->
+<div id="FENPEIView" style="display:none;margin: 15px;">
+	<div style="overflow: hidden;">
+		<div class="col-xs-6 col-md-6 col-lg-6 ">
+			<div class="col-xs-4 col-md-4 col-lg-4  p0 tr">
+				<label class="pt6" for="dataname">
+					编号：
+				</label>
+			</div>
+			<div class="form-span col-xs-8 col-md-8 col-lg-8 p0 tl">
+               {{editorInfo.bH}}
+          </div>
+		</div>
+		
+		<div class="col-xs-6 col-md-6 col-lg-6 ">
+			<div class="col-xs-4 col-md-4 col-lg-4  p0 tr">
+				<label class="pt6">
+					配套项目：
+				</label>
+			</div>
+			<div class="form-span col-xs-8 col-md-8 col-lg-8 p0 tl">
+				{{editorInfo.ptPro}}              
+          	</div>
+		</div>
+		<div class="col-xs-6 col-md-6 col-lg-6 ">
+			<div class="col-xs-4 col-md-4 col-lg-4  p0 tr">
+				<label class="pt6">
+					任务名称：
+				</label>
+			</div>
+			<div class="form-span col-xs-8 col-md-8 col-lg-8 p0 tl">
+               {{editorInfo.ruleName}}
+          	</div>
+		</div>
+		<div class="col-xs-6 col-md-6 col-lg-6 ">
+			<div class="col-xs-4 col-md-4 col-lg-4  p0 tr">
+				<label class="pt6">
+					投产数量：
+				</label>
+			</div>
+			<div class="form-span col-xs-8 col-md-8 col-lg-8 p0 tl">
+               {{editorInfo.tcNumber}}
+          	</div>
+		</div>
+		<div class="col-xs-6 col-md-6 col-lg-6 ">
+			<div class="col-xs-4 col-md-4 col-lg-4  p0 tr">
+				<label class="pt6">
+					配套组成表：
+				</label>
+			</div>
+			<div class="form-span col-xs-8 col-md-8 col-lg-8 p0 tl">
+               {{editorInfo.ptZc}}
+          	</div>
+		</div>
+		<div class="col-xs-6 col-md-6 col-lg-6 ">
+			<div class="col-xs-4 col-md-4 col-lg-4  p0 tr">
+				<label class="pt6">
+					任务编号：
+				</label>
+			</div>
+			<div class="form-span col-xs-8 col-md-8 col-lg-8 p0 tl">
+               {{editorInfo.ruleNum}}
+          	</div>
+		</div>
+		<div class="col-xs-6 col-md-6 col-lg-6 ">
+			<div class="col-xs-4 col-md-4 col-lg-4  p0 tr">
+				<label class="pt6">
+					是否军检：
+				</label>
+			</div>
+			<div class="form-span col-xs-8 col-md-8 col-lg-8 p0 tl">
+               {{editorInfo.isJJ}}
+          	</div>
+		</div>
+		<div class="col-xs-6 col-md-6 col-lg-6 ">
+			<div class="col-xs-4 col-md-4 col-lg-4  p0 tr">
+				<label class="pt6">
+					申请单位：
+				</label>
+			</div>
+			<div class="form-span col-xs-8 col-md-8 col-lg-8 p0 tl">
+               {{editorInfo.sqDw}}
+          	</div>
+		</div>
+		<div class="col-xs-6 col-md-6 col-lg-6 ">
+			<div class="col-xs-4 col-md-4 col-lg-4  p0 tr">
+				<label class="pt6">
+					联系人及电话：
+				</label>
+			</div>
+			<div class="form-span col-xs-8 col-md-8 col-lg-8 p0 tl">
+               {{editorInfo.UsTel}}
+          	</div>
+		</div>
+		<div class="col-xs-6 col-md-6 col-lg-6 ">
+			<div class="col-xs-4 col-md-4 col-lg-4  p0 tr">
+				<label class="pt6">
+					承制协议号：
+				</label>
+			</div>
+			<div class="form-span col-xs-8 col-md-8 col-lg-8 p0 tl">
+               {{editorInfo.UsTel}}
+          	</div>
+		</div>
+	</div>
+	<div class="qrycontant">
+		<div  style="margin-top: 15px;">
+			<table class="table table-bordered table-striped" style="text-align: center;">
+				<tbody>
+					<tr style="font-weight:bolder ;">
+						<td >ID</td>
+						<td >承接内容</td>
+						<td>具体要求</td>
+						<td>完成时间</td>
+						<td>节点类型</td>
+						<td>生产制号</td>
+						<td>责任部门</td>
+						
+						<td>人</td>
+						<td>操作</td>
+					</tr>
+					<tr ng-repeat="list in detailList" >
+						
+						<td style="vertical-align: middle;">0{{$index+1}}</td>
+						<td style="vertical-align: middle;">{{list.content}}</td>
+						<td style="vertical-align: middle;">{{list.jtyq}}</td>
+						<td style="vertical-align: middle;">{{list.time}}</td>
+						<td style="vertical-align: middle;">{{list.type}}</td>
+						<td style="vertical-align: middle;">{{list.scNum}}</td>
+						<td style="vertical-align: middle;">{{list.zrBm}}</td>
+						
+						<td class="username" style="vertical-align: middle;"></td>
+						<td style="vertical-align: middle;">
+							<button class='xqBtn' ng-click="checkUser($event)">分配</button>   
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>
+
+<!--列表添加弹框-->
+<div id="addView" style="display:none;margin:20px">
+	<form >
+		 <fieldset>
+			<div class="col-xs-6 col-md-6 col-lg-6 ">
+				<div class="col-xs-4 col-md-4 col-lg-4  p0 tr">
+					<label class="pt6" for="dataname">
+						<span style="color: red;"><b>*</b></span>
+						编号：
+					</label>
+				</div>
+				<div class="form-group col-xs-8 col-md-8 col-lg-8 p0 tl">
+	               <input class="inputSty" id="bhNm" type="text" value="SCC-2019-0001" readonly="true"/>
+	          </div>
+			</div>
+			<div class="col-xs-6 col-md-6 col-lg-6 " style="margin-bottom: 20px;">
+				<div class="col-xs-4 col-md-4 col-lg-4  p0 tr">
+					<span style="color: red;"><b>*</b></span>
+					<label class="pt6" for="dataname">
+						任务类别：
+					</label>
+				</div>
+				<div class="col-xs-8 col-md-8 col-lg-8 p0 tl">
+	               <select class="form-control sttRwL" style="width:184px;"></select>
+	          	</div>
+			</div>
+			<div class="col-xs-6 col-md-6 col-lg-6 ">
+				<div class="col-xs-4 col-md-4 col-lg-4  p0 tr">
+					<span style="color: red;"><b>*</b></span>
+					<label class="pt6">
+						配套项目：
+					</label>
+				</div>
+				<div class="form-group col-xs-8 col-md-8 col-lg-8 p0 tl">
+	               <input id="ptPro" class="inputSty"  type="text" placeholder="请输入配套项目" />
+	          	</div>
+			</div>
+			<div class="col-xs-6 col-md-6 col-lg-6 ">
+				<div class="col-xs-4 col-md-4 col-lg-4  p0 tr">
+					<span style="color: red;"><b>*</b></span>
+					<label class="pt6">
+						任务名称：
+					</label>
+				</div>
+				<div class="form-group col-xs-8 col-md-8 col-lg-8 p0 tl">
+	               <input id="ruleName" class="inputSty"  type="text" placeholder="请输入任务名称" />
+	          	</div>
+			</div>
+			<div class="col-xs-6 col-md-6 col-lg-6 ">
+				<div class="col-xs-4 col-md-4 col-lg-4  p0 tr">
+					<span style="color: red;"><b>*</b></span>
+					<label class="pt6">
+						投产数量：
+					</label>
+				</div>
+				<div class="form-group col-xs-8 col-md-8 col-lg-8 p0 tl">
+	               <input id="tcNm" class="inputSty"   placeholder="请输入投产数量"   maxlength="50" />
+	          	</div>
+			</div>
+			<div class="col-xs-6 col-md-6 col-lg-6 ">
+				<div class="col-xs-4 col-md-4 col-lg-4  p0 tr">
+					<label class="pt6">
+						配套组成表：
+					</label>
+				</div>
+				<div class="form-group col-xs-8 col-md-8 col-lg-8 p0 tl">
+	               <input id="ptZc" class="inputSty"   placeholder="请输入配套组成表"   maxlength="50" />
+	          	</div>
+			</div>
+			<div class="col-xs-6 col-md-6 col-lg-6 ">
+				<div class="col-xs-4 col-md-4 col-lg-4  p0 tr">
+					<span style="color: red;"><b>*</b></span>
+					<label class="pt6">
+						任务(合同)编号：
+					</label>
+				</div>
+				<div class="form-group col-xs-8 col-md-8 col-lg-8 p0 tl">
+	               <input id="ruleNo" class="inputSty"   placeholder="请输入任务编号"   maxlength="50" />
+	          	</div>
+			</div>
+			<div class="col-xs-6 col-md-6 col-lg-6 ">
+				<div class="col-xs-4 col-md-4 col-lg-4  p0 tr">
+					<span style="color: red;"><b>*</b></span>
+					<label class="pt6">
+						是否军检：
+					</label>
+				</div>
+				<div class="form-group col-xs-8 col-md-8 col-lg-8 p0 tl">
+	               <input id="isJJ" class="inputSty"   placeholder="请输入是否军检"   maxlength="50" />
+	            </div>
+			</div>
+			<div class="col-xs-6 col-md-6 col-lg-6 ">
+				<div class="col-xs-4 col-md-4 col-lg-4  p0 tr">
+					<span style="color: red;"><b>*</b></span>
+					<label class="pt6">
+						申请单位：
+					</label>
+				</div>
+				<div class="form-group col-xs-8 col-md-8 col-lg-8 p0 tl">
+	               <input id="sqDw" class="inputSty"   placeholder="请输入申请单位"   maxlength="50" />
+	          	</div>
+			</div>
+			<div class="col-xs-6 col-md-6 col-lg-6 ">
+				<div class="col-xs-4 col-md-4 col-lg-4  p0 tr">
+					<span style="color: red;"><b>*</b></span>
+					<label class="pt6">
+						联系人：
+					</label>
+				</div>
+				<div class="form-group col-xs-8 col-md-8 col-lg-8 p0 tl">
+	               <input id="User" class="inputSty"   placeholder="请输入联系人姓名"   maxlength="90" />
+	          	</div>
+			</div>
+			<div class="col-xs-6 col-md-6 col-lg-6 ">
+				<div class="col-xs-4 col-md-4 col-lg-4  p0 tr">
+					<label class="pt6">
+						联系人电话：
+					</label>
+				</div>
+				<div class="form-group col-xs-8 col-md-8 col-lg-8 p0 tl">
+	               <input id="UseTel" class="inputSty"   placeholder="请输入联系人电话"   maxlength="90" />
+	          	</div>
+			</div>
+			<div class="col-xs-6 col-md-6 col-lg-6 " style="margin-bottom: 20px;">
+				<div class="col-xs-4 col-md-4 col-lg-4  p0 tr">
+					<span style="color: red;"><b>*</b></span>
+					<label class="pt6" for="dataname">
+						任务类型：
+					</label>
+				</div>
+	          	<div class="col-xs-8 col-md-8 col-lg-8 p0 tl">
+	               <select class="form-control select2" id="RWLX" style="width:184px;">
+	               		<option value="" selected="selected">请选择</option>
+	               		<option value="00">重大</option>
+	               		<option value="01">重点</option>
+	               		<option value="02">一般</option>
+	               		<option value="03">其他</option>
+	               </select>
+	          	</div>
+			</div>
+		 </fieldset>
+	</form>
+	<div class="" style="margin-bottom: 15px;">
+		<button class="addBtn" id="AddDetailListBtn" style="padding: 5px 25px;">添加</button>
+		<button class='bjBtn' ng-click="DETALEDT()"  style="padding: 5px 25px;">修改</button>
+		<button class='delBtn'  ng-click="DETALDEL()" style="padding: 5px 25px;">删除</button>
+	</div>
+	<div class="qrycontant">
+		<div  style="margin-top:15px;">
+			<table class="table table-bordered table-striped" style="text-align: center;">
+				<!--详情表格-->
+				<tbody>
+					<tr style="font-weight:bolder ;">
+						<td>选择</td>
+						<td >ID</td>
+						<td >承接内容</td>
+						<td>具体要求及完成时间</td>
+						<td>完成时间</td>
+						<td>生产制号</td>
+						<td>责任部门</td>
+						<td>备注</td>
+					</tr>
+					<tr ng-repeat="list in addDetailList" >
+						<td>
+							<input type="radio" name="NRadio" data="{{list}}" value="" />
+						</td>
+						<td style="vertical-align: middle;">{{detailId}}_0{{$index+1}}</td>
+						<td style="vertical-align: middle;">{{list.cjNr}}</td>
+						<td style="vertical-align: middle;">{{list.jtYq}}</td>
+						<td style="vertical-align: middle;">{{list.wcTime}}</td>
+						<td style="vertical-align: middle;">{{list.scZh}}</td>
+						<td style="vertical-align: middle;">{{list.zrBm}}</td>
+						<td style="vertical-align: middle;">{{list.cjNr}}</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>	
+	</div>	
+	<div class="beizhu_content" style="padding: 10px;margin-top: 20px;">
+		<p style="overflow: hidden;">
+			<span style="float: left;">备注：</span>
+		</p>
+		<textarea name="" rows="" cols=""></textarea>
+	</div>
+	<div style="text-align: right;margin-top: 10px;">
+		<!--<div style="margin-right: 20px;display: inline-block;">
+			<span>对应申请单编号：</span>
+			<input type="text" />
+		</div>-->
+		<div style="margin-right: 20px;display: inline-block;">
+			<span > 生产检验科：</span>
+			<input type="text" />
+		</div>
+		<divstyle="display: inline-block;">
+			<span > 日期：</span> 	 	
+			<input type="text"  id="nowTime"  class="demo-input" placeholder="请选择时间" readonly="true"/>
+		</div>
+	</div>
+</div>
+
+
+
+<!--列表修改弹框-->
+<div id="editerView" style="display:none;margin:20px">
+	<form>	
+		 <fieldset>
+			<div class="col-xs-6 col-md-6 col-lg-6 ">
+				<div class="col-xs-4 col-md-4 col-lg-4  p0 tr">
+					<label class="pt6" for="dataname">
+						<span style="color: red;"><b>*</b></span>
+						编号：
+					</label>
+				</div>
+				<div class="form-group col-xs-8 col-md-8 col-lg-8 p0 tl">
+	               <input class="bhNm" value="{{editorInfo.bH}}" readonly="true"/>
+	          </div>
+			</div>
+			<div class="col-xs-6 col-md-6 col-lg-6 " style="margin-bottom: 20px;">
+				<div class="col-xs-4 col-md-4 col-lg-4  p0 tr">
+					<span style="color: red;"><b>*</b></span>
+					<label class="pt6" for="dataname">
+						任务类别：
+					</label>
+				</div>
+				<div class="col-xs-8 col-md-8 col-lg-8 p0 tl">
+	               <select class="form-control sttRwL" style="width:184px;"></select>
+	          	</div>
+			</div>
+			<div class="col-xs-6 col-md-6 col-lg-6 ">
+				<div class="col-xs-4 col-md-4 col-lg-4  p0 tr">
+				    <span style="color: red;"><b>*</b></span>
+					<label class="pt6">
+						配套项目：
+					</label>
+				</div>
+				<div class="form-group col-xs-8 col-md-8 col-lg-8 p0 tl">
+	               <input class="ptPro" value="{{editorInfo.ptPro}}" ng-model="editorInfo.ptPro"/>
+	          	</div>
+			</div>
+			<div class="col-xs-6 col-md-6 col-lg-6 ">
+				<div class="col-xs-4 col-md-4 col-lg-4  p0 tr">
+				    <span style="color: red;"><b>*</b></span>
+					<label class="pt6">
+						任务名称：
+					</label>
+				</div>
+				<div class="form-group col-xs-8 col-md-8 col-lg-8 p0 tl">
+	               <input class="ruleName" value="{{editorInfo.ruleName}}" ng-model="editorInfo.ruleName"/>
+	          	</div>
+			</div>
+			<div class="col-xs-6 col-md-6 col-lg-6 ">
+				<div class="col-xs-4 col-md-4 col-lg-4  p0 tr">
+					<span style="color: red;"><b>*</b></span>
+					<label class="pt6">
+						投产数量：
+					</label>
+				</div>
+				<div class="form-group col-xs-8 col-md-8 col-lg-8 p0 tl">
+	               <input class="tcNm"   value="{{editorInfo.tcNumber}}" ng-model="editorInfo.tcNumber"/>
+	          	</div>
+			</div>
+			<div class="col-xs-6 col-md-6 col-lg-6 ">
+				<div class="col-xs-4 col-md-4 col-lg-4  p0 tr">
+					<label class="pt6">
+						配套组成表：
+					</label>
+				</div>
+				<div class="form-group col-xs-8 col-md-8 col-lg-8 p0 tl">
+	               <input class="ptZc"   value="{{editorInfo.ptZc}}" ng-model="editorInfo.ptZc"/>
+	          	</div>
+			</div>
+			<div class="col-xs-6 col-md-6 col-lg-6 ">
+				<div class="col-xs-4 col-md-4 col-lg-4  p0 tr">
+					<span style="color: red;"><b>*</b></span>
+					<label class="pt6">
+						任务(合同)编号：
+					</label>
+				</div>
+				<div class="form-group col-xs-8 col-md-8 col-lg-8 p0 tl">
+	               <input class="ruleNo"  value="{{editorInfo.ruleNum}}" ng-model="editorInfo.ruleNum"/>
+	          	</div>
+			</div>
+			<div class="col-xs-6 col-md-6 col-lg-6 ">
+				<div class="col-xs-4 col-md-4 col-lg-4  p0 tr">
+					<span style="color: red;"><b>*</b></span>
+					<label class="pt6">
+						是否军检：
+					</label>
+				</div>
+				<div class="form-group col-xs-8 col-md-8 col-lg-8 p0 tl">
+	               <input class="isJJ"  value="{{editorInfo.isJJ}}" ng-model="editorInfo.isJJ"/>
+	          </div>
+			</div>
+			<div class="col-xs-6 col-md-6 col-lg-6 ">
+				<div class="col-xs-4 col-md-4 col-lg-4  p0 tr">
+					<span style="color: red;"><b>*</b></span>	
+					<label class="pt6">
+						申请单位：
+					</label>
+				</div>
+				<div class="form-group col-xs-8 col-md-8 col-lg-8 p0 tl">
+	               <input class="sqDw"  value="{{editorInfo.sqDw}}" ng-model="editorInfo.sqDw"/>
+	          	</div>
+			</div>
+			<div class="col-xs-6 col-md-6 col-lg-6 ">
+				<div class="col-xs-4 col-md-4 col-lg-4  p0 tr">
+					<span style="color: red;"><b>*</b></span>		
+					<label class="pt6">
+						联系人：
+					</label>
+				</div>
+				<div class="form-group col-xs-8 col-md-8 col-lg-8 p0 tl">
+	               <input class="UseTel" value="{{editorInfo.UsTel}}" ng-model="editorInfo.UsTel" />
+	          	</div>
+			</div>
+			<div class="col-xs-6 col-md-6 col-lg-6 ">
+				<div class="col-xs-4 col-md-4 col-lg-4  p0 tr">
+					<label class="pt6">
+						联系人电话：
+					</label>
+				</div>
+				<div class="form-group col-xs-8 col-md-8 col-lg-8 p0 tl">
+	               <input class="UseTel" value="{{editorInfo.UsTel}}" ng-model="editorInfo.UsTel" />
+	          	</div>
+			</div>
+			
+		 </fieldset>
+	</form>
+	<div class="" style="margin-bottom: 15px;">
+		<button class="addBtn"  ng-click="DETALADD(1)"   style="padding: 5px 25px;">添加</button>
+		<button class='bjBtn'   ng-click="DETALEDT(1)"   style="padding: 5px 25px;">修改</button>
+		<button class='delBtn'  ng-click="DETALDEL(1)"   style="padding: 5px 25px;">删除</button>
+	</div>
+	<table class="table table-bordered table-striped" style="text-align: center;">
+		 <tbody>
+			<tr style="font-weight:bolder ;">
+				<td >选择</td>
+				<td >ID</td>
+				<td >承接内容</td>
+				<td>具体要求及完成时间</td>
+				<td>完成时间</td>
+				<td>节点类型</td>
+				<td>生产制号</td>
+				<td>责任部门</td>
+			</tr>
+			<tr ng-repeat="list in detailList" >
+				<td>
+					<input type="radio" name="EDTRadio" data="{{list}}" value="" />
+				</td>
+				<td style="vertical-align: middle;">{{$index+1}}</td>
+				<td style="vertical-align: middle;">{{list.content}}</td>
+				<td style="vertical-align: middle;">{{list.jtyq}}</td>
+				<td style="vertical-align: middle;">{{list.time}}</td>
+				<td style="vertical-align: middle;">{{list.type}}</td>
+				<td style="vertical-align: middle;">{{list.scNum}}</td>
+				<td style="vertical-align: middle;">{{list.zrBm}}</td>
+			</tr>
+		</tbody>
+	</table>
+	<div class="beizhu_content" style="padding: 10px;margin-top: 20px;">
+		<p style="overflow: hidden;">
+			<span style="float: left;">备注：</span>
+		</p>
+		<textarea name="" rows="" cols=""></textarea>
+	</div>
+	<div style="text-align: right;margin-top: 10px;">
+		<div style="margin-right: 20px;display: inline-block;">
+			<span > 生产检验科：</span>
+			<input type="text" />
+		</div>
+		<divstyle="display: inline-block;">
+			<span > 日期：</span> 	 	
+			<input type="text"  id="nowTime_editor"  class="demo-input" placeholder="请选择时间" readonly="true"/>
+		</div>
+	</div>
+</div>
+
+
+
+
+<!--详情添加弹框-->
+<div id="addDetailListView" style="display:none;">
+	<div class="col-xs-12 col-md-12 col-lg-12 " style="margin-top: 25px;">
+		<div class="col-xs-4 col-md-4 col-lg-4  p0 tr">
+			<label class="pt6" for="dataname">
+				<span style="color: red;"><b>*</b></span>
+				承接内容：
+			</label>
+		</div>
+		<div class="form-group col-xs-8 col-md-8 col-lg-8 p0 tl">
+           <textarea id="cjNr" name="" rows="" cols="" style="width: 300px;"></textarea>
+      </div>
+	</div>
+	<div class="col-xs-12 col-md-12 col-lg-12" style="margin-bottom: 15px;">
+		<div class="col-xs-4 col-md-4 col-lg-4  p0 tr">
+			<label class="pt6">
+				供料方式：
+			</label>
+		</div>
+      	<div class="col-xs-8 col-md-8 col-lg-8 p0 tl">
+           <select class="form-control select2" id="XDSTT" style="width: 300px;">
+           		<option value="" selected="selected">请选择</option>
+           		<option value="00">甲供</option>
+           		<option value="01">自采</option>
+           </select>
+      	</div>
+	</div>
+	<div class="col-xs-12 col-md-12 col-lg-12 ">
+		<div class="col-xs-4 col-md-4 col-lg-4  p0 tr">
+			<label class="pt6">
+				具体要求：
+			</label>
+		</div>
+		<div class="form-group col-xs-8 col-md-8 col-lg-8 p0 tl">
+           <input id="jtYq" class="inputSty"  type="text" placeholder="请输入具体要求" />
+      	</div>
+	</div>
+	<div class="col-xs-12 col-md-12 col-lg-12 ">
+		<div class="col-xs-4 col-md-4 col-lg-4  p0 tr">
+			<label class="pt6">
+				<span style="color: red;"><b>*</b></span>
+				完成时间：
+			</label>
+		</div>
+		<div class="form-group col-xs-8 col-md-8 col-lg-8 p0 tl">
+           	<input type="text"  id="wcTime"  class="demo-input" placeholder="请选择完成时间" readonly="true"/>
+      	</div>
+	</div>
+	<div class="col-xs-12 col-md-12 col-lg-12 ">
+		<div class="col-xs-4 col-md-4 col-lg-4  p0 tr">
+			<label class="pt6">
+				<span style="color: red;"><b>*</b></span>
+				生产制号：
+			</label>
+		</div>
+		<div class="form-group col-xs-8 col-md-8 col-lg-8 p0 tl">
+           <input id="scZh" class="inputSty"   placeholder="请输入生产制号" />
+      	</div>
+	</div>
+	<div class="col-xs-12 col-md-12 col-lg-12 ">
+		<div class="col-xs-4 col-md-4 col-lg-4  p0 tr">
+			<label class="pt6">
+				<span style="color: red;"><b>*</b></span>
+				责任部门：
+			</label>
+		</div>
+		<div class="form-group col-xs-8 col-md-8 col-lg-8 p0 tl">
+           <select class="form-control sttzrBm" style="width: 300px;"></select>
+      	</div>
+	</div>
+	<div class="col-xs-12 col-md-12 col-lg-12 ">
+		<div class="col-xs-4 col-md-4 col-lg-4  p0 tr">
+			<label class="pt6">
+				备注：
+			</label>
+		</div>
+		<div class="form-group col-xs-8 col-md-8 col-lg-8 p0 tl">
+		   <textarea id="jtYq" name="" rows="" cols="" style="width: 300px;"></textarea>
+      	</div>
+	</div>
+</div>
+
+
+<!--详情修改弹框-->
+<div id="DETAL_EDT" style="display:none;">
+	<div class="col-xs-12 col-md-12 col-lg-12 " style="margin-top: 25px;">
+		<div class="col-xs-4 col-md-4 col-lg-4  p0 tr">
+			<label class="pt6" for="dataname">
+				<span style="color: red;"><b>*</b></span>
+				承接内容：
+			</label>
+		</div>
+		<div class="form-group col-xs-8 col-md-8 col-lg-8 p0 tl">
+           <input class="inputSty" id="cjNr_DETALEDT" value="{{DETAL_EDT.cjNr}}" ng-model="DETAL_EDT.cjNr"/>
+      </div>
+	</div>
+	
+	<div class="col-xs-12 col-md-12 col-lg-12 ">
+		<div class="col-xs-4 col-md-4 col-lg-4  p0 tr">
+			<label class="pt6">
+				具体要求：
+			</label>
+		</div>
+		<div class="form-group col-xs-8 col-md-8 col-lg-8 p0 tl">
+           <input id="jtYq_DETALEDT" class="inputSty"  value="{{DETAL_EDT.jtYq}}" ng-model="DETAL_EDT.jtYq"/>
+      	</div>
+	</div>
+	<div class="col-xs-12 col-md-12 col-lg-12 ">
+		<div class="col-xs-4 col-md-4 col-lg-4  p0 tr">
+			<label class="pt6">
+				<span style="color: red;"><b>*</b></span>
+				完成时间：
+			</label>
+		</div>
+		<div class="form-group col-xs-8 col-md-8 col-lg-8 p0 tl">
+           	<input type="text"  id="wcTime_editor"  class="demo-input" placeholder="请选择完成时间" readonly="true"/>
+      	</div>
+	</div>
+	<div class="col-xs-12 col-md-12 col-lg-12 ">
+		<div class="col-xs-4 col-md-4 col-lg-4  p0 tr">
+			<label class="pt6">
+				<span style="color: red;"><b>*</b></span>
+				节点类型：
+			</label>
+		</div>
+		<div class="form-group col-xs-8 col-md-8 col-lg-8 p0 tl">
+           <select class="form-control sttType" style="width: 300px;"></select>
+      	</div>
+	</div>
+	<div class="col-xs-12 col-md-12 col-lg-12 ">
+		<div class="col-xs-4 col-md-4 col-lg-4  p0 tr">
+			<label class="pt6">
+				<span style="color: red;"><b>*</b></span>
+				生产制号：
+			</label>
+		</div>
+		<div class="form-group col-xs-8 col-md-8 col-lg-8 p0 tl">
+           <input id="scZh_DETALEDT"  value="{{DETAL_EDT.scZh}}" ng-model="DETAL_EDT.scZh" />
+      	</div>
+	</div>
+	<div class="col-xs-12 col-md-12 col-lg-12 ">
+		<div class="col-xs-4 col-md-4 col-lg-4  p0 tr">
+			<label class="pt6">
+				<span style="color: red;"><b>*</b></span>
+				责任部门：
+			</label>
+		</div>
+		<div class="form-group col-xs-8 col-md-8 col-lg-8 p0 tl">
+           
+           <select class="form-control sttzrBm" style="width: 300px;"></select>
+      	</div>
+	</div>
+</div>
+
+
+
+
+<!--删除弹框-->
+<div id="delectView" style="display: none;margin: 15px;">
+	<p>确认删除这条数据吗</p>
+</div>
+
+
+<!--人员选择弹框-->
+<div id="checkUsertView" style="display: none;margin: 15px;">
+	<table  class="table table-bordered table-striped" style="text-align: center;">
+		<tbody>
+			<tr style="font-weight:bolder ;">
+				<td>选择</td>
+				<td>人员姓名</td>
+				<td>ID</td>
+			</tr>
+			<tr ng-repeat="list in userList">
+				<td>
+					<input type="radio" name="user" data="{{list}}" value="" />
+				</td>
+				<td>{{list.USERNAME}}</td>
+				<td>{{list.USERID}}</td>
+			</tr>
+		</tbody>
+	</table>
+</div>	

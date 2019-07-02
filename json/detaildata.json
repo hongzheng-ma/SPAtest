@@ -1,0 +1,33 @@
+{
+ 	"pageNum":"1",
+	"pages":"3",
+	"total":"60",
+	"list":[
+			{
+			"SHENGCHANNM":"S19-190",
+			"XIANGMU":"SGY16-15",	
+			"CHENGJIE":"零件加工",
+			"YAOQIU":"要求2019年4月20日完成12种共196件零件加工，明细见备注",
+			"TIME":"2019-10-10",
+			"JIEDIAN":"I类",
+			"ZHIHAO":"S19-180",
+			"zrBm":"加工部",
+			"TIJIAO":"已提交",
+			"TIJIAONM":"01"
+		},
+		{
+			"SHENGCHANNM":"S19-190",
+			"XIANGMU":"SGY16-15",	
+			"CHENGJIE":"零件加工",
+			"YAOQIU":"要求2019年4月20日完成12种共196件零件加工，明细见备注",
+			"TIME":"2019-10-10",
+			"JIEDIAN":"II类",
+			"ZHIHAO":"S19-180",
+			"zrBm":"加工部",
+			"TIJIAO":"未提交",
+			"TIJIAONM":"00"
+		}
+	]
+	
+}
+

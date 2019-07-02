@@ -1,0 +1,29 @@
+.main-sidebar::-webkit-scrollbar  { 
+   display:none!important;
+}
+/*.main-sidebar{
+	height: 612px!important;
+	overflow-y: auto!important;
+}*/
+.fl{
+	float: left;
+}
+.fr{
+	float: right;
+}
+.lines{
+	position: relative;
+	top:10px;
+}
+#line_s{
+	float: left;
+    width: 30px;
+    height: 1px;
+    background: -webkit-linear-gradient(right, #fff, #000);
+    position: relative;
+    top:15px
+}
+.main-header .logo{
+	padding: 0px!important;
+}
+

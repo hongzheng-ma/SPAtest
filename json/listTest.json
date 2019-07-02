@@ -1,0 +1,40 @@
+{
+ 	"pageNum":"1",
+	"pages":"3",
+	"total":"60",
+	"list":[
+			{
+			"BIANHAO":"SCC-2019-0001",
+			"LEIBIE":"外接任务",
+			"PEITAOXM":"摆式加速度计",
+			"RENWU":"零件加工",
+			"TOUCHANNM":"230",
+			"PEITAOBIAO":"Y001",
+			"RENWUBH":"SGY16-15",
+			"JUNJIAN":"是",
+			"SQDANWEI":"生产部",
+			"USER":"王静",
+			"TEL":"1815010921",
+			"XIADAStt":"00",
+			"XIADADesc":"未下达"
+			
+		},
+		{
+			"BIANHAO":"SCC-2019-0002",
+			"LEIBIE":"质量补投",
+			"PEITAOXM":"摆式加速度计",
+			"RENWU":"零件加工",
+			"TOUCHANNM":"230",
+			"PEITAOBIAO":"Y001",
+			"RENWUBH":"SGY16-15",
+			"JUNJIAN":"是",
+			"SQDANWEI":"生产部",
+			"USER":"王静",
+			"TEL":"1815010921",
+			"XIADAStt":"01",
+			"XIADADesc":"已下达"
+		}
+	]
+	
+}
+

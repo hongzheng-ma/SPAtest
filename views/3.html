@@ -1,0 +1,135 @@
+<section class="content" style="padding-top:0px">
+	<h3 class="shouye">
+	  	<span class="glyphicon glyphicon-home"></span> 
+		您当前位置：
+		<span style="color:#22BEEF;">人员工资管理</span>
+	</h3>
+	<div class="row">
+		<div class="tab_data" style="">
+			<p>
+				<img src="dist/img/qry.png" style="margin-right: 5px;position: relative;bottom: 2px;"/>
+				<b style="font-size:15px;">查询</b>
+			</p>
+			<div class="tab_body" style="overflow: hidden;text-align: center;">
+				<div class="col-xs-4 col-md-4 col-lg-4 mb10">
+					<div class="col-xs-4 col-md-4 col-lg-4  p0 tr">
+						<label class="pt6">
+							姓名：
+						</label>
+					</div>
+					<input id="name" class="col-xs-8 col-md-8 col-lg-8  inputSty"  type="text"  placeholder="请输入姓名"  />
+				</div>
+				<div class="col-xs-4 col-md-4 col-lg-4 mb10">
+					<div class="col-xs-4 col-md-4 col-lg-4  p0 tr">
+						<label class="pt6">
+							编号：
+						</label>
+					</div>
+					<input id="Num" class="col-xs-8 col-md-8 col-lg-8  inputSty"  type="text"  placeholder="请输入制编号" />
+				</div>
+				<div class="col-xs-4 col-md-4 col-lg-4 mb10">
+					<div class="col-xs-4 col-md-4 col-lg-4  p0 tr">
+						<label class="pt6">
+							零件：
+						</label>
+					</div>
+					<input id="linjian" class="col-xs-8 col-md-8 col-lg-8  inputSty"  type="text"  placeholder="请输入零件"/>
+				</div>
+				<div class=" col-xs-12 col-md-12 col-lg-12" >
+					<button class="btn btn-info    btnqry"    id='queryBtn'>查询</button>
+					<button class="btn btn-default btnqry" id='clearBtn'>清空</button>
+				</div>
+			</div>	
+		</div>
+	</div>	
+	<div class="row">	
+		<div class="col-xs-12">
+			<div class="contant" style="text-align: center">
+				<!--表格数据 -->
+				<div class="box_credit"  style="padding: 15px;background: #fff;overflow: auto;">
+					<table id="example" class="table table-bordered table-striped" style="text-align: center;">
+						<tbody>
+							<tr style="font-weight:bolder ;">
+								<td>姓名</td>
+								<td>编号</td>
+								<td>零件</td>
+								
+								<td>数量</td>
+								<td>单价</td>
+								
+							</tr>
+							<tr ng-repeat="list in listData">
+								<td>{{list.bH}}</td>
+								<td>{{list.ptPro}}</td>
+								<td>{{list.ruleName}}</td>
+								
+								<td>{{list.tcNumber}}</td>
+								<td>{{list.ptZc}}</td>
+								
+							</tr>
+						</tbody>
+					</table>
+					<div id="divT"  class="page_div"></div>
+				</div>	
+			</div>
+		</div>
+	</div>
+</section>
+
+
+
+<div class=""  id="editorView" style="display:none;">
+	<div style="padding:15px;">
+		<div class="col-xs-12 col-md-12 col-lg-12 ">
+			<div class="col-xs-4 col-md-4 col-lg-4  p0 tr">
+				<label class="pt6">
+					daraurl：
+				</label>
+			</div>
+			<div class="form-group col-xs-8 col-md-8 col-lg-8 p0 tl">
+               <input id="daraurl" name="daraurl"   type="text" value="{{dataList.daraurl}}" ng-model="dataList.daraurl"/>
+          	</div>
+		</div>
+		<div class="col-xs-12 col-md-12 col-lg-12 ">
+			<div class="col-xs-4 col-md-4 col-lg-4  p0 tr">
+				<label class="pt6">
+					dataid：
+				</label>
+			</div>
+			<div class="form-group col-xs-8 col-md-8 col-lg-8 p0 tl">
+               <input id="dataId" name="dataid"   type="text" value="{{dataList.dataid}}" ng-model="dataList.dataid"/>
+          	</div>
+		</div>
+		<div class="col-xs-12 col-md-12 col-lg-12 ">
+			<div class="col-xs-4 col-md-4 col-lg-4  p0 tr">
+				<label class="pt6" for="dataname">
+					dataname：
+				</label>
+			</div>
+			<div class="form-group col-xs-8 col-md-8 col-lg-8 p0 tl">
+               <input  name="dataname" id="dataname" type="text" value="{{dataList.dataname}}" ng-model="dataList.dataname"/>
+          </div>
+		</div>
+		<div class="col-xs-12 col-md-12 col-lg-12 ">
+			<div class="col-xs-4 col-md-4 col-lg-4  p0 tr">
+				<label class="pt6" for="dataname">
+					datatype：
+				</label>
+			</div>
+			<div class="form-group col-xs-8 col-md-8 col-lg-8 p0 tl">
+               <input  name="datatype" id="datatype" type="text"  value="{{dataList.datatype}}" ng-model="dataList.datatype"/>
+          </div>
+		</div>
+		<div class="col-xs-12 col-md-12 col-lg-12 ">
+			<div class="col-xs-4 col-md-4 col-lg-4  p0 tr">
+				<label class="pt6">
+					username：
+				</label>
+			</div>
+			<div class="form-group col-xs-8 col-md-8 col-lg-8 p0 tl">
+               <input id="username" name="username"   type="text" value="{{dataList.username}}" ng-model="dataList.username"/>
+          	</div>
+		</div>
+		
+	</div>
+</div>

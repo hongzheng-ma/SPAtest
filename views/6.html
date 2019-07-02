@@ -1,0 +1,359 @@
+<!-- <script>var names=["甲"，"乙"，"丙"，"丁"]</script> -->
+<section class="content" style="padding-top:0px">
+	<h3 class="shouye">
+	  	<span class="glyphicon glyphicon-home"></span> 
+		您当前位置：
+		<span style="color:#22BEEF;">外协管理</span>
+	</h3>
+	<!--查询列表部分-->
+	<div class="content_list">
+	<div class="row">
+		<div class="tab_data" style="">
+			<p>
+				<img src="dist/img/qry.png" style="margin-right: 5px;position: relative;bottom: 2px;"/>
+				<b style="font-size:15px;">查询</b>
+			</p>
+			<div class="tab_body" style="overflow: hidden;text-align: center;">
+				<div class="col-xs-4 col-md-4 col-lg-4 mb10">
+					<div class="col-xs-4 col-md-4 col-lg-4  p0 tr">
+						<label class="pt6">
+							序号：
+						</label>
+					</div>
+					<input id="xNum" class="col-xs-8 col-md-8 col-lg-8  inputSty"  type="text"  placeholder="请输入序号"  />
+				</div>
+				<div class="col-xs-4 col-md-4 col-lg-4 mb10">
+					<div class="col-xs-4 col-md-4 col-lg-4  p0 tr">
+						<label class="pt6">
+							制号：
+						</label>
+					</div>
+					<input id="zNum" class="col-xs-8 col-md-8 col-lg-8  inputSty"  type="text"  placeholder="请输入制号" />
+				</div>
+				<div class="col-xs-4 col-md-4 col-lg-4 mb10">
+					<div class="col-xs-4 col-md-4 col-lg-4  p0 tr">
+						<label class="pt6">
+							投产类型：
+						</label>
+					</div>
+					<div class="col-xs-8 col-md-8 col-lg-8 p0 tl">
+		               <select class="form-control select2" id="tctype" style="width:100%;">
+		               		<option value="01"  selected="selected">整体外协</option>
+		               		<option value="02">工序外协</option>
+		               </select>
+		          	</div>
+				</div>
+				<div class="col-xs-4 col-md-4 col-lg-4 mb10">
+					<div class="col-xs-4 col-md-4 col-lg-4  p0 tr">
+						<label class="pt6">
+							供方选择：
+						</label>
+					</div>
+					<div class="col-xs-8 col-md-8 col-lg-8 p0 tl">
+		               <select class="form-control select2" id="GFXZSTT" style="width:100%;">
+		               		<option value=""  selected="selected">请选择</option>
+		               		<option value="01" >甲供</option>
+		               		<option value="02">自采</option>
+		               </select>
+		          	</div>
+				</div>
+				
+				<div class=" col-xs-12 col-md-12 col-lg-12" >
+					<button class="btn btn-info    btnqry"    id='queryBtn'>查询</button>
+					<button class="btn btn-default btnqry" id='clearBtn'>清空</button>
+				</div>
+			</div>	
+		</div>
+	</div>
+	<div class="" style="margin:15px;margin-top: 0px;">
+		<button class="xqBtn" id="addBtn"  style="padding: 5px 25px;">外协任务</button>
+		<button class='fpBtn' ng-click="CHOOSEMOBAN()"   style="padding: 5px 25px;">合同管理</button>
+	    <button class='fpBtn'    style="padding: 5px 25px;">价格管理</button>
+		<button class='fpBtn'    style="padding: 5px 25px;">供销管理</button>
+	</div>
+	<div class="row" style="margin: 0px;">	
+		
+		<div class="row">	
+			<div class="col-xs-12">
+				<div class="contant" style="text-align: center">
+					<!--表格数据 -->
+					<div class="box_credit"  style="padding: 15px;background: #fff;overflow: auto;">
+						<table id="example" class="table table-bordered table-striped" style="text-align: center;">
+							<tbody>
+								<tr style="font-weight:bolder ;">
+									<!--<td>选择</td>
+									<td>生产制号</td>
+									<td>项目编号</td>
+									<td>任务名称</td>
+									<td>图纸种类</td>
+									<td>配套项目</td>
+									<td>图纸数量</td>
+									<td>完成时间</td>
+									<td>加工数量</td>
+									<td>图号</td>
+									<td>外协负责人</td>
+-->
+								   <!-- <td>选择</td>
+									<td>生产任务单</td>
+									<td>序号</td>
+									<td>任务（合同）编号</td>
+									<td>承接内容</td>
+									<td>零件名称</td>
+									<td>图号</td>
+									<td>数量</td>
+									<td>材料</td>
+									<td>制号</td>
+									<td>完成时间</td>
+									<td>投产分类</td>
+									<td>提交状态</td> -->
+									<td>生产任务单</td>
+									<td>配套项目</td>
+									<td>加工内容</td>
+									<td>生产制号</td>
+								</tr>
+								<tr ng-repeat="list in listData">
+									<!-- <td>
+										<input type="checkbox" name="checkbox" data="{{list.name}}" value="" />
+									</td> -->
+									<td class='xqtd' ng-click="showXQ()">{{list.XUHAO}}</td>
+									<td>{{list.SHENGCHAN}}</td>
+									<td>{{list.XUHAO}}</td>
+									<td>{{list.XUHAO}}</td>
+									
+									<!-- <td>{{list.LINGJIAN}}</td>
+									<td>{{list.TUHAO}}</td>
+									
+									<td>{{list.SHULIANG}}</td>
+									<td>{{list.CAILIAO}}</td>
+									<td>{{list.ZHIHAO}}</td>
+									<td>{{list.TIME}}</td>
+									<td>{{list.TOUCHAN}}</td>
+									<td>{{list.TIJIAO}}</td> -->
+									
+									
+									<!--<td class='xqtd' ng-click="showXQ()">1{{list.bH}}</td>
+									<td>{{list.ptPro}}1</td>
+									<td>{{list.ruleName}}1</td>
+									
+									<td>{{list.tcNumber}}1</td>
+									<td>{{list.ptZc}}</td>
+									<td>{{list.ruleNum}}</td>
+									<td>{{list.isJJ}}</td>
+									<td>10</td>
+									<td>{{list.type}}</td>
+									<td>{{list.type}}</td>-->
+								</tr>
+							</tbody>
+						</table>
+						<div id="divT"  class="page_div"></div>
+					</div>	
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+
+
+<!--工序列表-->
+<div class="GONGXULIST" style="margin: 0px;display: none;">	
+	
+	<div class="" style="margin:15px;margin-bottom: 0px;">
+		<!-- <button class="xqBtn" id="addBtn" ng-click="LR()" style="padding: 5px 25px;">供应商选择</button> -->
+		<label>供应商选择：</label>
+
+		<select class="xqBtn" id="producer" style="padding: 5px 25px;">
+          <option >甲</option>
+		  <option >乙</option>
+		  <option >丙</option>
+		  <option >丁</option>
+			
+		</select>
+		<!-- <button class='fpBtn' ng-click="SC()"     style="padding: 5px 25px;">生成合同</button> -->
+	</div>
+	<!--<div class="row">	-->
+		<div class="contant" style="text-align: center">
+			<!--表格数据 -->
+			<div class="box_credit"  style="padding: 15px;background: #fff;overflow: auto;">
+				<table id="example" class="table table-bordered table-striped" style="text-align: center;">
+					<tbody>
+						<tr style="font-weight:bolder ;">
+							<!-- <td>选择</td> -->
+							<td >工序号</td>
+							<td>零件名称</td>
+							<td>零件序号</td>
+							<td>数量</td>
+							<td>制号</td>
+							<td>加工内容</td>
+							<td>投产类别</td>
+							<td>计划完成时间</td>
+							<td>供应商</td>
+							<td>单价</td>
+							<td>合同类别</td>
+						</tr>
+						<tr ng-repeat="list in GXINfo">
+							<!-- <td>
+								<input type="checkbox" name="checkbox" data="{{list.name}}" value="" />
+							</td> -->
+							<td style="vertical-align: middle;">{{list.Nm}}</td>
+							<td style="vertical-align: middle;">{{list.gx}}</td>
+							<td style="vertical-align: middle;">{{list.GXNR}}</td>
+							<td style="vertical-align: middle;">{{list.GXZB}}</td>
+							<td style="vertical-align: middle;">{{list.CZZ}}</td>
+							<td style="vertical-align: middle;">{{list.price}}</td>
+			
+							<td style="vertical-align: middle;"class='xqtd' ng-click="showTQ()">{{list.total}}</td>
+							<td style="vertical-align: middle;">{{list.time}}</td>
+							<td style="vertical-align: middle;"><select class="xqBtn">
+
+			<option value="1" selected="selected" >甲</option>
+			<option value="2"  >乙</option>
+			<option value="3"  >丙</option>
+			<option value="4"  >丁</option>
+			
+		                    </select></td>
+							<td style="vertical-align: middle;"><input style="width: 50px;" value="可编辑"></input></td>
+							<td style="vertical-align: middle;">{{list.JY}}</td>
+							
+						</tr>
+					</tbody>
+				</table>
+				<div id="divT"  class="page_div"></div>
+			</div>	
+		</div>
+	<!--</div>-->
+</div>
+
+<!--工艺列表-->
+<div class="GONGYILIST" style="margin: 0px;display: none;">	
+	
+	<div class="" style="margin:15px;margin-bottom: 0px;">
+		<!-- <button class="xqBtn" id="addBtn" ng-click="LR()" style="padding: 5px 25px;">供应商选择</button> -->
+	
+		<!-- <button class='fpBtn' ng-click="SC()"     style="padding: 5px 25px;">生成合同</button> -->
+		
+			<div >
+				<label class="pt6">
+					零件名称：
+				</label>
+				<input id="xNum2" style="width:88px,display:inline" value="钳"  type="text"   disabled />
+				<label class="pt6">
+					图号：
+				</label>
+				<input id="zNum2" style="width:50px,display:inline"  type="text" value="002" disabled />
+				<label class="pt6">
+					制号：
+				</label>
+				<input id="zNum3"   type="text" style="width:50px,display:inline" value="234RC" disabled />
+				<label class="pt6">
+						数量：
+				</label>
+				
+				<input id="zNum4" style="width:66px,display:inline"  type="text" value="3" disabled />
+							
+			</div>
+
+	</div>
+	<!--<div class="row">	-->
+		<div class="contant" style="text-align: center">
+			<!--表格数据 -->
+			<div class="box_credit"  style="padding: 15px;background: #fff;overflow: auto;">
+				<table id="exa" class="table table-bordered table-striped" style="text-align: center;">
+					<tbody>
+						<tr style="font-weight:bolder ;">
+							<!-- <td>选择</td> -->
+							<td >工序号</td>
+							<td>零件名称</td>
+							<td>供应商</td>
+							<td>开工时间</td>
+							<td>完工时间</td>
+							<td>合同类号</td>
+							
+						</tr>
+						<tr ng-repeat="list in GXINfo">
+							<!-- <td>
+								<input type="checkbox" name="checkbox" data="{{list.name}}" value="" />
+							</td> -->
+							<td style="vertical-align: middle;">{{list.Nm}}</td>
+							<td style="vertical-align: middle;">{{list.gx}}</td>
+							<td style="vertical-align: middle;"><select class="xqBtn">
+							
+							<option value="1" selected="selected" >甲</option>
+							<option value="2"  >乙</option>
+							<option value="3"  >丙</option>
+							<option value="4"  >丁</option>
+							
+							                </select></td>
+							<td style="vertical-align: middle;">{{list.time}}</td>
+							<td style="vertical-align: middle;">{{list.CZZ}}</td>
+							<td style="vertical-align: middle;">{{list.price}}</td>
+							
+							
+						</tr>
+					</tbody>
+				</table>
+				<div id="divT"  class="page_div"></div>
+			</div>	
+		</div>
+	<!--</div>-->
+</div>
+<!--供应商选择页面-->
+<div id="LRView" style="display:none;padding: 20px;">
+	<div class="col-xs-12 col-md-12 col-lg-12 " style="width:50%;text-align: left;">
+		<div class="col-xs-4 col-md-4 col-lg-4  p0 tr">
+			<label class="pt6">
+				<span style="color: red;"><b>*</b></span>
+				完成时间：
+			</label>
+		</div>
+		<div class="form-group col-xs-6 col-md-6 col-lg-6 p0 tl">
+           	<input type="text"  id="WANCHENGTIME"  class="demo-input" placeholder="请选择完成时间" readonly="true"/>
+      	</div>
+	</div>
+	<table  class="table table-bordered table-striped" style="text-align: center;">
+		<tbody>
+			<tr style="font-weight:bolder ;">
+				<td>选择</td>
+				<td>厂商ID</td>
+				<td> 厂商名称</td>
+				<td> 价格</td
+				
+			</tr>
+			<tr ng-repeat="list in userList">
+				<td>
+					<input type="radio" name="user" data="{{list}}" value="" />
+				</td>
+				<td>{{list.CHANGSHANGID}}</td>
+				<td>{{list.CHANGSHANG}}</td>
+				<td>{{list.JIAGE}}</td>
+			</tr>
+		</tbody>
+	</table>
+	
+	<div class="col-xs-6 col-md-6 col-lg-6 " style="margin-top: 15px;">
+		<div class="col-xs-4 col-md-4 col-lg-4  p0 tr">
+			<label class="pt6">
+				<span style="color: red;"><b>*</b></span>
+				供方：
+			</label>
+		</div>
+		<div class="form-group col-xs-6 col-md-6 col-lg-6 p0 tl">
+           	<input type="text"  id="GONGFANG"  class="demo-input" readonly="true"/>
+      	</div>
+	</div>
+	
+	<div class="col-xs-6 col-md-6 col-lg-6 " style="margin-top: 15px;">
+		<div class="col-xs-4 col-md-4 col-lg-4  p0 tr">
+			<label class="pt6">
+				<span style="color: red;"><b>*</b></span>
+				价格：
+			</label>
+		</div>
+		<div class="form-group col-xs-6 col-md-6 col-lg-6 p0 tl">
+           	<input type="text"  id="GONGFANGJG"  class="demo-input" readonly="true"/>
+      	</div>
+	</div>
+</div>
+
+
+

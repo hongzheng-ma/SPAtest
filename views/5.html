@@ -1,0 +1,316 @@
+<section class="content" style="padding-top:0px">
+	<h3 class="shouye">
+	  	<span class="glyphicon glyphicon-home"></span> 
+		您当前位置：
+		<span style="color:#22BEEF;">计划管理</span>
+	</h3>
+	<div class="row">
+		<div class="tab_data" style="">
+			<p>
+				<img src="dist/img/qry.png" style="margin-right: 5px;position: relative;bottom: 2px;"/>
+				<b style="font-size:15px;">查询</b>
+			</p>
+			<div class="tab_body" style="overflow: hidden;text-align: center;">
+				<div class="col-xs-4 col-md-4 col-lg-4 mb10">
+					<div class="col-xs-4 col-md-4 col-lg-4  p0 tr">
+						<label class="pt6">
+							零件名称：
+						</label>
+					</div>
+					<input id="xNum" class="col-xs-8 col-md-8 col-lg-8  inputSty"  type="text"  placeholder="请输入零件名称"  />
+				</div>
+				<div class="col-xs-4 col-md-4 col-lg-4 mb10">
+					<div class="col-xs-4 col-md-4 col-lg-4  p0 tr">
+						<label class="pt6">
+							图号：
+						</label>
+					</div>
+					<input id="zNum" class="col-xs-8 col-md-8 col-lg-8  inputSty"  type="text"  placeholder="请输入图号" />
+				</div>
+				<div class="col-xs-4 col-md-4 col-lg-4 mb10">
+					<div class="col-xs-4 col-md-4 col-lg-4  p0 tr">
+						<label class="pt6">
+							材料：
+						</label>
+					</div>
+					<input id="tctype" class="col-xs-8 col-md-8 col-lg-8  inputSty"  type="text"  placeholder="请输入材料"/>
+				</div>
+				
+				<div class="col-xs-4 col-md-4 col-lg-4 mb10">
+					<div class="col-xs-4 col-md-4 col-lg-4  p0 tr">
+						<label class="pt6">
+							制号：
+						</label>
+					</div>
+					<input id="zhihao" class="col-xs-8 col-md-8 col-lg-8  inputSty"  type="text"  placeholder="请输入制号"/>
+				</div>
+				<div class="col-xs-4 col-md-4 col-lg-4 mb10">
+					<div class="col-xs-4 col-md-4 col-lg-4  p0 tr">
+						<label class="pt6">
+							投产分类：
+						</label>
+					</div>
+					<div class="col-xs-8 col-md-8 col-lg-8 p0 tl">
+		               <select class="form-control select2" id="TCFLSTT" style="width:100%;">
+		               		
+		               		<option value="00" selected="selected">自制</option>
+		               		<option value="01">整体外协</option>
+		               		<option value="02">工序外协</option>
+		               </select>
+		          	</div>
+				</div>
+				<div class=" col-xs-12 col-md-12 col-lg-12" >
+					<button class="btn btn-info    btnqry"    id='queryBtn'>查询</button>
+					<button class="btn btn-default btnqry" id='clearBtn'>清空</button>
+				</div>
+			</div>	
+		</div>
+	</div>
+	<div class="content_list">
+		<div class="" style="margin-bottom: 15px;">
+			<button class="xqBtn" id="ZJWX"  style="padding: 5px 25px;">整体外协</button>
+			<button class='fpBtn' ng-click="submitBtn()"   style="padding: 5px 25px;">提交</button>
+		</div>
+		<div class="row">	
+			<div class="col-xs-12">
+				<div class="contant" style="text-align: center">
+					<!--表格数据 -->
+					<div class="box_credit"  style="padding: 15px;background: #fff;overflow: auto;">
+						<table id="example" class="table table-bordered table-striped" style="text-align: center;">
+							<tbody>
+								<tr style="font-weight:bolder ;">
+									<td>选择</td>
+									<td>生产任务单</td>
+									<td>序号</td>
+									<td>零件名称</td>
+									<td>图号</td>
+									<td>数量</td>
+									<td>材料</td>
+									<td>制号</td>
+									<td>完成时间</td>
+									<td>投产分类</td>
+									<td>提交状态</td>
+								</tr>
+								<tr ng-repeat="list in listData">
+									<td>
+										<input type="checkbox" name="checkbox" data="{{list.name}}" value="" />
+									</td>
+									<td class="xqtd" ng-click="InfoView(list)">{{list.SHENGCHAN}}</td>
+									<td>{{list.XUHAO}}</td>
+									<td>{{list.LINGJIAN}}</td>
+									<td>{{list.TUHAO}}</td>
+									
+									<td>{{list.SHULIANG}}</td>
+									<td>{{list.CAILIAO}}</td>
+									<td>{{list.ZHIHAO}}</td>
+									<td>{{list.TIME}}</td>
+									<td>{{list.TOUCHAN}}</td>
+									<td>{{list.TIJIAO}}</td>
+								</tr>
+							</tbody>
+						</table>
+						<div id="divT"  class="page_div"></div>
+					</div>	
+				</div>
+			</div>
+		</div>
+	</div>
+	
+</section>
+
+<!--详细信息弹框-->
+<div class="InfoView" style="display:none;margin: 15px;">
+	<div style="overflow: hidden;">
+		<div class="col-xs-6 col-md-6 col-lg-6 ">
+			<div class="col-xs-4 col-md-4 col-lg-4  p0 tr">
+				<label class="pt6" for="dataname">
+					编号：
+				</label>
+			</div>
+			<div class="form-span col-xs-8 col-md-8 col-lg-8 p0 tl">
+               {{detailInfo.bH}}
+          </div>
+		</div>
+		
+		<div class="col-xs-6 col-md-6 col-lg-6 ">
+			<div class="col-xs-4 col-md-4 col-lg-4  p0 tr">
+				<label class="pt6">
+					配套项目：
+				</label>
+			</div>
+			<div class="form-span col-xs-8 col-md-8 col-lg-8 p0 tl">
+				{{detailInfo.ptPro}}              
+          	</div>
+		</div>
+		<div class="col-xs-6 col-md-6 col-lg-6 ">
+			<div class="col-xs-4 col-md-4 col-lg-4  p0 tr">
+				<label class="pt6">
+					任务名称：
+				</label>
+			</div>
+			<div class="form-span col-xs-8 col-md-8 col-lg-8 p0 tl">
+               {{detailInfo.ruleName}}
+          	</div>
+		</div>
+		<div class="col-xs-6 col-md-6 col-lg-6 ">
+			<div class="col-xs-4 col-md-4 col-lg-4  p0 tr">
+				<label class="pt6">
+					投产数量：
+				</label>
+			</div>
+			<div class="form-span col-xs-8 col-md-8 col-lg-8 p0 tl">
+               {{detailInfo.tcNumber}}
+          	</div>
+		</div>
+		<div class="col-xs-6 col-md-6 col-lg-6 ">
+			<div class="col-xs-4 col-md-4 col-lg-4  p0 tr">
+				<label class="pt6">
+					配套组成表：
+				</label>
+			</div>
+			<div class="form-span col-xs-8 col-md-8 col-lg-8 p0 tl">
+               {{detailInfo.ptZc}}
+          	</div>
+		</div>
+		<div class="col-xs-6 col-md-6 col-lg-6 ">
+			<div class="col-xs-4 col-md-4 col-lg-4  p0 tr">
+				<label class="pt6">
+					任务编号：
+				</label>
+			</div>
+			<div class="form-span col-xs-8 col-md-8 col-lg-8 p0 tl">
+               {{detailInfo.ruleNum}}
+          	</div>
+		</div>
+		<div class="col-xs-6 col-md-6 col-lg-6 ">
+			<div class="col-xs-4 col-md-4 col-lg-4  p0 tr">
+				<label class="pt6">
+					是否军检：
+				</label>
+			</div>
+			<div class="form-span col-xs-8 col-md-8 col-lg-8 p0 tl">
+               {{detailInfo.isJJ}}
+          	</div>
+		</div>
+		<div class="col-xs-6 col-md-6 col-lg-6 ">
+			<div class="col-xs-4 col-md-4 col-lg-4  p0 tr">
+				<label class="pt6">
+					申请单位：
+				</label>
+			</div>
+			<div class="form-span col-xs-8 col-md-8 col-lg-8 p0 tl">
+               {{detailInfo.sqDw}}
+          	</div>
+		</div>
+		<div class="col-xs-6 col-md-6 col-lg-6 ">
+			<div class="col-xs-4 col-md-4 col-lg-4  p0 tr">
+				<label class="pt6">
+					联系人及电话：
+				</label>
+			</div>
+			<div class="form-span col-xs-8 col-md-8 col-lg-8 p0 tl">
+               {{detailInfo.UsTel}}
+          	</div>
+		</div>
+		<div class="col-xs-6 col-md-6 col-lg-6 ">
+			<div class="col-xs-4 col-md-4 col-lg-4  p0 tr">
+				<label class="pt6">
+					承制协议号：
+				</label>
+			</div>
+			<div class="form-span col-xs-8 col-md-8 col-lg-8 p0 tl">
+               {{detailInfo.UsTel}}
+          	</div>
+		</div>
+	</div>
+	<div class="qrycontant">
+		<div  style="margin-top:15px;">
+			<table class="table table-bordered table-striped" style="text-align: center;">
+				<tbody>
+					<tr style="font-weight:bolder ;">
+						<td >ID</td>
+						<td >承接内容</td>
+						<td>具体要求</td>
+						<td>完成时间</td>
+						<td>节点类型</td>
+						<td>生产制号</td>
+						<td>责任部门</td>
+						<td>人</td>
+					</tr>
+					<tr>
+						<td style="vertical-align: middle;">{{$index+1}}</td>
+						<td style="vertical-align: middle;">{{detailInfo.content}}</td>
+						<td style="vertical-align: middle;">{{detailInfo.jtyq}}</td>
+						<td style="vertical-align: middle;">{{detailInfo.time}}</td>
+						<td style="vertical-align: middle;">{{detailInfo.type}}</td>
+						<td style="vertical-align: middle;">{{detailInfo.scNum}}</td>
+						<td style="vertical-align: middle;">{{detailInfo.zrBm}}</td>
+						<td style="vertical-align: middle;">{{detailInfo.zrBm}}</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+	<div class="">
+		<!--<table id="example" class="table table-bordered table-striped" style="text-align: center;">
+			<tbody>
+				<tr style="font-weight:bolder ;">
+					<td>序号</td>
+					<td>零件名称</td>
+					<td>图号</td>
+					
+					<td>数量</td>
+					<td>材料</td>
+					<td>制号</td>
+					<td>完成时间</td>
+					<td>投产分类</td>
+				</tr>
+				<tr ng-repeat="list in listData">
+					<td>{{list.bH}}</td>
+					<td>{{list.ptPro}}</td>
+					<td>{{list.ruleName}}</td>
+					<td>{{list.tcNumber}}</td>
+					<td>{{list.ptZc}}</td>
+					<td>{{list.ruleNum}}</td>
+					<td>{{list.isJJ}}</td>
+					<td>{{list.type}}</td>
+				</tr>
+			</tbody>
+		</table>-->
+	</div>
+</div>
+
+<!--整件外协弹框-->
+<div id="ZJWXView" style="display:none;margin:20px">
+	<div class="col-xs-12 col-md-12 col-lg-12 " style="width:50%;text-align: left;">
+		<div class="col-xs-4 col-md-4 col-lg-4  p0 tr">
+			<label class="pt6">
+				<span style="color: red;"><b>*</b></span>
+				完成时间：
+			</label>
+		</div>
+		<div class="form-group col-xs-8 col-md-8 col-lg-8 p0 tl">
+           	<input type="text"  id="WANCHENGTIME"  class="demo-input" placeholder="请选择完成时间" readonly="true"/>
+      	</div>
+	</div>
+	<table  class="table table-bordered table-striped" style="text-align: center;">
+		<tbody>
+			<tr style="font-weight:bolder ;">
+				<td>选择</td>
+				<td>人员姓名</td>
+				<td>ID</td>
+			</tr>
+			<tr ng-repeat="list in userList">
+				<td>
+					<input type="radio" name="user" data="{{list}}" value="" />
+				</td>
+				<td>{{list.USERNAME}}</td>
+				<td>{{list.USERID}}</td>
+			</tr>
+		</tbody>
+	</table>
+	
+</div>
+
+
+

@@ -1,0 +1,188 @@
+<section class="content" style="padding-top:0px">
+	<h3 class="shouye">
+	  	<span class="glyphicon glyphicon-home"></span> 
+		您当前位置：系统管理- 基础信息管理 - 
+		<span style="color:#22BEEF;">码表管理</span>
+	</h3>
+	<div class="row">
+		<div class="tab_data" style="">
+			<p>
+				<img src="dist/img/qry.png" style="margin-right: 5px;position: relative;bottom: 2px;"/>
+				<b style="font-size:15px;">查询</b>
+			</p>
+			<div class="tab_body" style="overflow: hidden;text-align: center;">
+				<div class="col-xs-4 col-md-4 col-lg-4 mb10">
+					<div class="col-xs-4 col-md-4 col-lg-4  p0 tr">
+						<label class="pt6">
+							类型：
+						</label>
+					</div>
+					<input id="rulename" class="col-xs-8 col-md-8 col-lg-8  inputSty"  type="text"  placeholder="请输入类型"   maxlength="88"/>
+				</div>
+				<div class="col-xs-4 col-md-4 col-lg-4 mb10">
+					<div class="col-xs-4 col-md-4 col-lg-4  p0 tr">
+						<label class="pt6">
+							编码：
+						</label>
+					</div>
+					<input id="ruleNum" class="col-xs-8 col-md-8 col-lg-8  inputSty"  type="text"  placeholder="请输入编码"  maxlength="58"/>
+				</div>
+				<div class="col-xs-4 col-md-4 col-lg-4 mb10">
+					<div class="col-xs-4 col-md-4 col-lg-4  p0 tr">
+						<label class="pt6">
+							值：
+						</label>
+					</div>
+					<input id="sqdw" class="col-xs-8 col-md-8 col-lg-8  inputSty"  type="text"  placeholder="请输入值"/>
+				</div>
+				<div class=" col-xs-12 col-md-12 col-lg-12" >
+					<button class="btn btn-info    btnqry"    id='queryBtn'>查询</button>
+					<button class="btn btn-default btnqry" id='clearBtn'>清空</button>
+				</div>
+			</div>	
+		</div>
+	</div>
+	<div class="" style="margin-bottom: 15px;">
+		<button class="addBtn" ng-click="GXTJ()" style="padding: 5px 25px;">添加</button>
+		
+		<button class='bjBtn' ng-click="editorNm()"   style="padding: 5px 25px;">编辑</button>
+		
+		<button class='delBtn'  ng-click="delectNm()" style="padding: 5px 25px;">删除</button>
+	</div>
+	<div class="row">	
+		<div class="col-xs-12">
+			<div class="contant" style="text-align: center">
+				<!--表格数据 -->
+				<div class="box_credit"  style="padding: 15px;background: #fff;overflow: auto;">
+					<table id="example" class="table table-bordered table-striped" style="text-align: center;">
+						<tbody>
+							<tr style="font-weight:bolder ;">
+								<td>选择</td>
+								<td>类型</td>
+								<td>编码</td>
+								<td>值</td>
+								<td>备注</td>
+								
+							</tr>
+							<tr ng-repeat="list in listData">
+								<td>
+									<input type="radio" name="radio" data="{{list}}" value="" />
+								</td>
+								<td>{{list.bH}}</td>
+								<td>{{list.ptPro}}</td>
+								<td>{{list.name}}</td>
+								<td>{{list.isJJ}}</td>
+							</tr>
+						</tbody>
+					</table>
+					<div id="divT"  class="page_div"></div>
+				</div>	
+			</div>
+		</div>
+	</div>
+</section>
+
+
+
+<!--码表添加页面-->
+<div id="addGXView" style="display:none;">
+	<form class="cmxform" id="commentForm" method="get" style="margin-top: 20px;">
+		 <fieldset>
+			<div class="col-xs-12 col-md-12 col-lg-12 ">
+				<div class="col-xs-4 col-md-4 col-lg-4  p0 tr">
+					<label class="pt6" for="dataname">
+						类型：
+					</label>
+				</div>
+				<div class="form-group col-xs-8 col-md-8 col-lg-8 p0 tl">
+	               <input class="inputSty" id="gongxuhao" type="text" placeholder="请输入类型"/>
+	          </div>
+			</div>
+			<div class="col-xs-12 col-md-12 col-lg-12 ">
+				<div class="col-xs-4 col-md-4 col-lg-4  p0 tr">
+					<label class="pt6">
+						编码：
+					</label>
+				</div>
+				<div class="form-group col-xs-8 col-md-8 col-lg-8 p0 tl">
+	               <input id="gongshi" class="inputSty"  type="text" placeholder="请输入编码" />
+	          	</div>
+			</div>
+			<div class="col-xs-12 col-md-12 col-lg-12 ">
+				<div class="col-xs-4 col-md-4 col-lg-4  p0 tr">
+					<label class="pt6">
+						值：
+					</label>
+				</div>
+				<div class="form-group col-xs-8 col-md-8 col-lg-8 p0 tl">
+	               <input id="gongshi" class="inputSty"  type="text" placeholder="请输入值" />
+	          	</div>
+			</div>
+			<div class="col-xs-12 col-md-12 col-lg-12 ">
+				<div class="col-xs-4 col-md-4 col-lg-4  p0 tr">
+					<label class="pt6">
+						备注：
+					</label>
+				</div>
+				<div class="form-group col-xs-8 col-md-8 col-lg-8 p0 tl">
+	               <input id="gongshi" class="inputSty"  type="text" placeholder="请输入备注" />
+	          	</div>
+			</div>
+		 </fieldset>
+	</form>
+</div>
+
+<!--码表修改页面-->
+<div id="GXEDTView" style="display:none;">
+	<form class="cmxform" id="commentForm" method="get" style="margin-top: 20px;">
+		 <fieldset>
+			<div class="col-xs-12 col-md-12 col-lg-12 ">
+				<div class="col-xs-4 col-md-4 col-lg-4  p0 tr">
+					<label class="pt6" for="dataname">
+						类型：
+					</label>
+				</div>
+				<div class="form-group col-xs-8 col-md-8 col-lg-8 p0 tl">
+	               <input class="gongxuhao" value="{{editorInfo.bH}}" ng-model="editorInfo.bH"/>
+	          </div>
+			</div>
+			<div class="col-xs-12 col-md-12 col-lg-12 ">
+				<div class="col-xs-4 col-md-4 col-lg-4  p0 tr">
+					<label class="pt6">
+						编码：
+					</label>
+				</div>
+				<div class="form-group col-xs-8 col-md-8 col-lg-8 p0 tl">
+	               <input class="gongshi" value="{{editorInfo.ptPro}}" ng-model="editorInfo.ptPro"/>
+	          	</div>
+			</div>
+			<div class="col-xs-12 col-md-12 col-lg-12 ">
+				<div class="col-xs-4 col-md-4 col-lg-4  p0 tr">
+					<label class="pt6">
+						值：
+					</label>
+				</div>
+				<div class="form-group col-xs-8 col-md-8 col-lg-8 p0 tl">
+	               <input class="gongshi" value="{{editorInfo.name}}" ng-model="editorInfo.name"/>
+	          	</div>
+			</div>
+			<div class="col-xs-12 col-md-12 col-lg-12 ">
+				<div class="col-xs-4 col-md-4 col-lg-4  p0 tr">
+					<label class="pt6">
+						备注：
+					</label>
+				</div>
+				<div class="form-group col-xs-8 col-md-8 col-lg-8 p0 tl">
+	               <input class="gongshi" value="{{editorInfo.isJJ}}" ng-model="editorInfo.isJJ"/>
+	          	</div>
+			</div>
+		 </fieldset>
+	</form>
+</div>
+
+<!--删除弹框-->
+<div id="delectView" style="display: none;margin: 15px;">
+	<p>确认删除这条数据吗</p>
+</div>
+
+

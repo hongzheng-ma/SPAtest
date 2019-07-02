@@ -1,0 +1,34 @@
+{
+ 	"pageNum":"1",
+	"pages":"3",
+	"total":"60",
+	"list":[
+			{
+			"SHENGCHAN":"S19-190",
+			"XUHAO":"SCW0590",
+			"LINGJIAN":"连接环",
+			"TUHAO":"707.7730.154",
+			"SHULIANG":"150",
+			"CAILIAO":"4J36",
+			"ZHIHAO":"S19-180",
+			"TIME":"2019-10-01",
+			"TOUCHAN":"整体外协",
+			"TIJIAO":"未提交"
+		},
+		{
+			"SHENGCHAN":"S19-190",
+			"XUHAO":"SCW0590",
+			"LINGJIAN":"连接环",
+			"TUHAO":"707.7730.154",
+			"SHULIANG":"150",
+			"CAILIAO":"4J36",
+			"ZHIHAO":"S19-180",
+			"TIME":"2019-10-01",
+			"TOUCHAN":"工序外协",
+			"TIJIAO":"未提交",
+			"CHENJIE":"零件加工"
+		}
+	]
+	
+}
+

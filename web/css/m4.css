@@ -1,0 +1,309 @@
+.layui-layer-content:has(> #addDetailListView)~.layui-layer-btn>.layui-layer-btn1{
+	background: blue!important;
+}
+
+.contant table td{
+	vertical-align: middle;
+}
+.form-span {
+    margin-top: 6px;
+}
+#DETAL_EDT input {
+    width: 300px;
+    height: 38px;
+    padding: 5px;
+}
+#addDetailListView input {
+    width: 300px;
+    height: 38px;
+    padding: 5px;
+}
+#editerView input{
+	padding: 3px 5px;
+}
+.xqtd{
+	color: #22BEEF;
+	text-decoration: 
+	underline;
+	cursor: pointer;
+}
+.subBtn{
+	border: 1px solid #22BEEF;
+	color:#fff;
+	padding:1px 15px;
+	background:#22BEEF;
+}
+.xqBtn{
+	border: 1px solid #22BEEF;
+	color:#22BEEF;padding:1px 15px;
+	background: #ffff;
+}
+#ZJWX,.addBtn{
+	background:#22BEEF ;
+	color:#FFFFFF;
+	border: none;
+}
+.fpBtn{
+	background:#FFC100 ;
+	color:#FFFFFF;
+	border: none;
+	/*border: 1px solid #FFC100;
+	padding:1px 15px;*/
+	
+}
+.delBtn{
+	background:red ;
+	color:#FFFFFF;
+	border: none;
+	/*border: 1px solid red;
+	color:red;padding:1px 15px*/
+}
+.bjBtn{
+	background:green ;
+	color:#FFFFFF;
+	border: none;
+	/*border: 1px solid green;
+	color:green;
+	padding:1px 15px*/
+}
+
+#addBtn{
+	background:#22BEEF ;
+	color:#FFFFFF;
+	border: none;
+	
+	/*border: 1px solid #22BEEF;
+    color: #22BEEF;
+    padding: 2px 15px;*/
+}
+#addBtn:focus{
+	outline: none;
+}
+.error{
+	color:red;
+}
+.combox{
+	border: 1px solid #ccc;
+	width: 500px;
+    height: 38px;
+    color: #000;
+}
+#commentForm input{
+	width: 300px;
+    height: 38px;
+    padding: 5px;
+}
+.cmxform input{
+	width: 300px;
+    height: 38px;
+    padding: 5px;
+}
+.inputSty{
+	padding:5px;
+    
+}
+#example td{
+	vertical-align: middle;
+}
+#editorView input{
+	padding: 5px;
+    width: 300px;
+    height: 38px;
+}
+
+
+/*权限管理页面样式 */
+
+.labSty{
+	font-size: 16px;
+    position: relative;
+    bottom: 4px;
+    font-weight: normal;
+    text-align:left;
+    display: inline-block;
+    width: 200px;
+}
+
+.pt20{
+	padding: 20px 0px;
+}
+.layui-layer-btn .layui-layer-btn0 {
+    border-color: #FFC100!important;
+    background-color: #FFC100 !important;
+    color: #fff;
+}
+
+.savebtn{
+	padding: 5px 18px;
+	font-size: 10px;
+	border: none;
+	background:#46CEF8;
+	color: #fff;
+}
+.layui-layer-btn a{
+	padding: 0px!important;
+}
+.savebtn:hover{
+	background:#46CEF8;
+	color: #fff;
+}
+/**/
+.layui-layer-btn{
+	text-align: center!important;
+}
+textarea{
+	resize:none;
+	width:925px;
+	height: 115px;
+	}
+.shenhe{
+	position: relative;
+    left: -220px;
+    font-size: 18px;
+    font-weight: bolder;
+    margin: 10px;
+}	
+.active{
+	background: #C5C5C5! important;
+}
+#creatTable1 td{
+	cursor: pointer;
+}
+#creatTable2 td{
+	cursor: pointer;
+}
+ul,li{
+	margin: 0px;
+    padding: 0px;
+	list-style: none;
+}
+.fr{
+	float: right;
+}
+.fl{
+	float: left;
+}
+.mr20{
+	margin-right: 20px;
+}
+.p0{
+	padding: 0px!important;
+	overflow: auto;
+	/*max-height:200px*/
+}
+.box{
+	border-top: 1px solid #eee;
+}
+.shouye{
+	font-size: 16px;
+    color: #A4A3A6;
+    padding: 15px 0px;
+    margin: 0px;
+}
+.tab_data{
+	border: 1px solid #eee;
+   /* overflow: hidden;*/
+    margin-right: 15px;
+    margin-left: 15px;
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+    background: white;
+}
+.tab_body input {
+    border: 1px solid #ccc;
+    padding: 5px;
+}
+.tab_body input::-webkit-input-placeholder{
+	color:#ccc
+}
+.tab_data input::-webkit-input-placeholder{
+	color:#ccc
+}
+.btn_box {
+    text-align: center;
+}
+.btn_box>button {
+    margin-top: 15px;
+    margin-right: 30px;
+}
+#queryBtn{
+	padding: 5px 20px;
+    background: #22BEEF;
+    color: white;
+}
+#clearBtn{
+	padding: 5px 20px;
+    background: #E8E8E8;
+    color: #5C5C5C;
+}
+.mb10{
+	margin-bottom: 15px;
+}
+
+.tab_data>P{
+	border-bottom: 1px solid #ccc;
+    box-sizing: border-box;
+    padding: 12px;
+    color: black;
+    margin-bottom: 20px;
+    background: #FBFBFB;
+}
+
+
+
+/*客户关系调整*/
+.spec-item .spec-info {
+    width: 104px!important;
+    padding:0px!important;
+    padding-top: 5px!important;
+    margin-left: 27px!important;
+}
+
+.m0{
+	margin: 0px;
+}
+
+#popclear{
+	padding: 5px 20px;
+    background: #E8E8E8;
+    color: #5C5C5C;
+}
+#popquery{
+	padding: 3px 20px;
+    background: #22BEEF;
+    color: white;
+}
+.CFMassage {
+    resize: none;
+    width: 785px;
+    height: 60px;
+}
+.infoMSg{
+	margin-bottom: 10px;
+	display: inline-block;
+    margin-left: 10px;
+    margin-right: 20px;
+}
+.ctrMem{
+	display: inline-block;
+	padding:2px 10px;
+	background: #FD7FD1;
+	color: #fff;
+}
+.ctrType{
+	display: inline-block;
+	padding:2px 10px;
+	background: #46C582;
+	color: #fff;
+}
+.mt0{
+	margin-top: 0px!important;
+}
+.btnqry {
+    width: 80px;
+    border: none;
+}
+.btnqry:focus{
+	outline: none!important;
+}
+

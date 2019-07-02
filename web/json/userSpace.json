@@ -1,0 +1,18 @@
+[
+	{
+		"USERID":"",
+		"USERNAME":"请选择"
+	},
+	{
+		"USERID":"1",
+		"USERNAME":"加工部"
+	},
+	{
+		"USERID":"2",
+		"USERNAME":"生产制造部"
+	},
+	{
+		"USERID":"3",
+		"USERNAME":"生产经营部"
+	}
+]

@@ -1,0 +1,22 @@
+[
+	{
+		"USERID":"00",
+		"USERNAME":"刘小"
+	},
+	{
+		"USERID":"1",
+		"USERNAME":"张三"
+	},
+	{
+		"USERID":"2",
+		"USERNAME":"李四"
+	},
+	{
+		"USERID":"3",
+		"USERNAME":"赵某某"
+	},
+	{
+		"USERID":"3",
+		"USERNAME":"孙某某"
+	}
+]
